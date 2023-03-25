@@ -3,7 +3,7 @@
     <div className="productflex">
 
     <div className="productfleximg">
-    <img src="../assets/images/flady.jpg">
+    <img src="../assets/images/aritop.jpg">
     </div>
 
     <div className="productflexinfo">

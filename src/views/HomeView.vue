@@ -31,13 +31,13 @@
 </div>
 </div> -->
 
-  <div className="bgcontainer">
+  <!-- <div className="bgcontainer">
 
     <div className="loopbg" :style="backgroundStyle">
 
   </div>
 
-</div>
+</div> -->
 
 
 </div>
@@ -75,13 +75,25 @@
   <!-- <div className="allproducts" v-for="(product, i) in products" :key="i"> -->
 
     <div className="pw">
+      <div class="cil">
+
+    <h1> Latest Arrivals </h1>
+      </div>
+
+      <!-- <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6.00834 13.1834L18.7333 10.8V3.63336H3.45834" stroke="#191919" stroke-width="1.5" stroke-miterlimit="10"></path>
+							<path d="M0.43335 1.25H2.82502L6.00002 13.1833L4.61668 15.2583C4.48429 15.4615 4.41472 15.6992 4.41668 15.9417V15.9417C4.41668 16.2643 4.54487 16.5738 4.77304 16.802C5.00121 17.0302 5.31067 17.1583 5.63335 17.1583H15.55" stroke="#191919" stroke-width="1.5" stroke-miterlimit="10"></path>
+							<path d="M15.55 18.75C15.9872 18.75 16.3417 18.3956 16.3417 17.9584C16.3417 17.5211 15.9872 17.1667 15.55 17.1667C15.1128 17.1667 14.7583 17.5211 14.7583 17.9584C14.7583 18.3956 15.1128 18.75 15.55 18.75Z" stroke="#191919" stroke-width="1.5" stroke-miterlimit="10"></path>
+							<path d="M7.59165 18.75C8.02888 18.75 8.38332 18.3956 8.38332 17.9584C8.38332 17.5211 8.02888 17.1667 7.59165 17.1667C7.15443 17.1667 6.79999 17.5211 6.79999 17.9584C6.79999 18.3956 7.15443 18.75 7.59165 18.75Z" stroke="#191919" stroke-width="1.5" stroke-miterlimit="10"></path>
+							</svg> -->
 
     <div className="pgridc">
   <div v-for="(product, i) in productlist" :key="i">
   <p> <img :src="product.image"/> </p>
     <!-- <p className="pname"  @click="viewProduct(product.id)"> {{product.title}}  </p> -->
-    <p className="pname"  @click="viewProduct(product.id)"> {{product.name}}  </p>
+    <p className="pname"> <a> <router-link to="/product"> {{product.name}}  </router-link> </a></p>
   <p className="pprice"> {{product.price}}  </p>
+  <p className="pprice"> {{product.category}}  </p>
   </div>
 
   </div>
@@ -126,16 +138,19 @@ export default {
     intervalTime: 7000, // in milliseconds,
     backgroundImageUrls:[
       {
+        id:1,
         img: Oneimg,
-        name: "Checkk out our brand new 2023 collection",
+        name: "Check out our brand new 2023 collection",
         more: "A collection of all our latest categories",
       },
       {
+        id:2,
         img: Twoimg,
-        name: "Checkk out our brand new 2023 collection",
+        name: "Check out our brand new 2023 collection",
         more: "A collection of all our latest categories",
       },
       {
+        id:3,
         img: Threeimg,
         name: "Check out our brand new 2023 collection",
         more: "A collection of all our latest categories",
@@ -151,44 +166,52 @@ export default {
         image: Pone,
         name: "BLACKTOP",
         price: "N30,000",
+        category: "category",
       },
 
       {
         image: Ptwo,
         name: "RUBYGOWN",
         price: "N30,000",
+        category: "category",
       },
 
       {
         image: Pthree,
         name: "ARITOP",
         price: "N30,000",
+        category: "category",
       },
 
       {
         image: Pfour,
         name: "BENNYBUBU",
         price: "N30,000",
+        category: "category",
       },
       {
         image: Pone,
         name: "BLACKTOP",
         price: "N30,000",
+        category: "category",
       },
       {
         image: Ptwo,
         name: "RUBYGOWN",
         price: "N30,000",
+        category: "category",
       },
       {
         image: Pthree,
         name: "ARITOP",
         price: "N30,000",
+        category: "category",
       },
       {
         image: Pfour,
         name: "BENNYBUBU",
         price: "N30,000",
+        category: "category",
       },
       ]
 
@@ -324,6 +347,18 @@ export default {
   justify-content:space-between;
   width:85%;
   margin:auto;
+}
+
+.pw{
+  padding-top:100px;
+}
+
+.cil h1{
+    font-size:40px;
+    font-weight:300;
+    color:rgb(97, 96, 96);
+    line-height:2.7rem;
+    /* padding-bottom:20px; */
 }
 
 .hbg{
@@ -519,7 +554,13 @@ export default {
   width:250px;
 }
 
-.pname{
+/* .pname{
+  color:#81A695;
+  font-weight:500;
+} */
+
+.pname a{
+  text-decoration:none;
   color:#81A695;
   font-weight:500;
 }
@@ -533,6 +574,28 @@ export default {
 
 .hflex{
   display:block;
+}
+
+.cil{
+    /* width:90%; */
+    text-align: center;
+    margin:auto;
+    align-items:center;
+    /* padding-bottom:20px; */
+}
+
+.cil h1{
+    /* font-size:40px; */
+    font-weight:500;
+    color:rgb(97, 96, 96);
+
+    font-size: 35px;
+    line-height: 1.4em;
+    /* padding-bottom:20px; */
+}
+
+.pw {
+    padding-top: 50px;
 }
 
 .hbg {
@@ -552,6 +615,7 @@ export default {
   font-size:30px;
   line-height:1.4em;
   margin-bottom:-3px;
+
 }
 
 .htext p{

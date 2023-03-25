@@ -21,16 +21,7 @@
     <a> <router-link to="/"> Jumpsuit </router-link> </a>
     <a> <router-link to="/"> Swim Wear </router-link> </a>
     <a> <router-link to="/"> Swim Cover </router-link> </a>
-    <a> <router-link to="/cart"> My Cart </router-link> </a>
-     <a> <router-link to="/"> Tops </router-link> </a>
-    <a> <router-link to="/"> Pants </router-link> </a>
-    <a> <router-link to="/"> Skirt </router-link> </a>
-    <a> <router-link to="/"> Gown </router-link> </a>
-    <a> <router-link to="/"> Bubu </router-link> </a>
-    <a> <router-link to="/"> Jumpsuit </router-link> </a>
-    <a> <router-link to="/"> Swim Wear </router-link> </a>
-    <a> <router-link to="/"> Swim Cover </router-link> </a>
-    <a> <router-link to="/cart"> My Cart </router-link> </a>
+    <a> <router-link to="/contact"> Contact </router-link> </a>
     </div>
 
   </div>
@@ -55,7 +46,7 @@
     <a class="nl"> <router-link to="/"> Jumpsuit </router-link> </a>
     <a class="nl"> <router-link to="/"> Swim Wear </router-link> </a>
     <a class="nl"> <router-link to="/"> Swim Cover </router-link> </a>
-    <a class="nl"> <router-link to="/cart"> My Cart </router-link> </a>
+    <a class="nl"> <router-link to="/contact"> Contact </router-link> </a>
     </div>
 
     <i class="fa-solid fa-magnifying-glass fa-2x" id="iconcolor" @click="showmys"></i>
@@ -112,7 +103,7 @@
 
 
 
-  <div className="secondfnavlinks" v-if="shownav">
+  <!-- <div className="secondfnavlinks" v-if="shownav">
 
     <a> <router-link to="/"> Tops </router-link> </a>
     <a> <router-link to="/"> Pants </router-link> </a>
@@ -122,9 +113,9 @@
     <a> <router-link to="/"> Jumpsuit </router-link> </a>
     <a> <router-link to="/"> Swim Wear </router-link> </a>
     <a> <router-link to="/"> Swim Cover </router-link> </a>
-    <a> <router-link to="/cart"> My Cart </router-link> </a>
+    <a class="nl"> <router-link to="/contact"> Contact </router-link> </a>
 
-</div>
+</div> -->
 
 </div>
   <router-view :atc="addtocart" :buttonz="buttons" :increasev="increasevalue" :decreasev="decreasevalue" :hdc="handleClick" :productlist="products" :selected="selectedProducts" :viewProduct="(id) => getProductDetails(id)"/>
@@ -323,7 +314,7 @@ body{
 }
 
 .nl{
-  margin-right:15px;
+  margin-right:30px;
   color:black;
   font-weight:400;
   font-size:13px;
