@@ -12,11 +12,10 @@
 
 
     <!-- {{ myc }} -->
+
         <div class="maincartflex">
-
-
-
-        <!-- <div class="cartflex">
+            <div>
+        <div class="cartflex">
 
             <div class="cartimg">
                 <img src="../assets/images/flady.jpg">
@@ -29,7 +28,25 @@
                 <h4> Remove from cart </h4>
             </div>
 
-        </div> -->
+        </div>
+
+        <div class="cartflex">
+
+<div class="cartimg">
+    <img src="../assets/images/flady.jpg">
+</div>
+
+<div class="carttext">
+    <h3> Linear Green Plated pants </h3>
+    <p class="carttextp"> Quantity: <span class="qp"> 2 </span> </p>
+    <p class="carttexts"> Size: <span class="qp"> XXL </span> </p>
+    <h4> Remove from cart </h4>
+</div>
+
+</div>
+
+</div>
+
 
         <div>
 
@@ -179,13 +196,13 @@
         width:85%;
         align-items: flex-start;
         margin:auto;
+        padding-top: 220px;
     }
 
     .cartflex{
         display:flex;
         flex-basis:40%;
         margin-bottom:30px;
-        /* justify-content:space-between; */
     }
 
     .cartimg img{
@@ -283,16 +300,23 @@
 
     @media (max-width: 1000px){
 
-    .maincartflex {
-        display: block;
-        /* justify-content: space-between;
-        width: 85%;
-        align-items: flex-start;
-        margin: auto; */
+        .maincartflex{
+        display:block;
+        padding-bottom: 120px;
+    }
+
+    .osdiv{
+        margin-top:100px;
     }
 
     .cartimg {
         margin-left:0px;
+    }
+
+    .cartflex{
+        display:flex;
+        flex-basis:40%;
+        margin-bottom:50px;
     }
 
     .carttext {

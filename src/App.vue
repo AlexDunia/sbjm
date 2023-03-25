@@ -47,19 +47,19 @@
   <nav className="navlinks">
 
     <div className="catlinks">
-    <a> <router-link to="/"> Tops </router-link> </a>
-    <a> <router-link to="/"> Pants </router-link> </a>
-    <a> <router-link to="/"> Skirt </router-link> </a>
-    <a> <router-link to="/"> Gown </router-link> </a>
-    <a> <router-link to="/"> Bubu </router-link> </a>
-    <a> <router-link to="/"> Jumpsuit </router-link> </a>
-    <a> <router-link to="/"> Swim Wear </router-link> </a>
-    <a> <router-link to="/"> Swim Cover </router-link> </a>
-    <a> <router-link to="/cart"> My Cart </router-link> </a>
+    <a class="nl"> <router-link to="/"> Tops </router-link> </a>
+    <a class="nl"> <router-link to="/"> Pants </router-link> </a>
+    <a class="nl"> <router-link to="/"> Skirt </router-link> </a>
+    <a class="nl"> <router-link to="/"> Gown </router-link> </a>
+    <a class="nl"> <router-link to="/"> Bubu </router-link> </a>
+    <a class="nl"> <router-link to="/"> Jumpsuit </router-link> </a>
+    <a class="nl"> <router-link to="/"> Swim Wear </router-link> </a>
+    <a class="nl"> <router-link to="/"> Swim Cover </router-link> </a>
+    <a class="nl"> <router-link to="/cart"> My Cart </router-link> </a>
     </div>
 
     <i class="fa-solid fa-magnifying-glass fa-2x" id="iconcolor" @click="showmys"></i>
-    <img src="./assets/images/sb.png" class="cartimg"/>
+     <router-link to="/cart"> <img src="./assets/images/sb.png" class="cartimg"/> </router-link>
     <span class="dottwo"> {{ my.length }} </span>
     <i class="fa-solid fa-bars fa-2x" @click="navtoggle()" v-if="!shownav" id="iconcolor"> </i>
     <i class="fa-solid fa-xmark fa-2x" @click="navtoggle()" v-if="shownav" id="iconcolor"></i>
@@ -101,7 +101,7 @@
 <div class="sinput">
   <input type="search" name="type" placeholder="Search here">
 </div>
-<i class="fa-solid fa-cart-shopping" id="iconcolor"></i>
+<a> <router-link to="/cart"> <i class="fa-solid fa-cart-shopping" id="iconcolor"></i> </router-link> </a>
     <!-- <img src="./assets/images/sb.png" class="cartimg"/> -->
     <span class="dottwo">6</span>
     <i class="fa-solid fa-bars fa-2x" @click="navmobiletoggle()" id="iconcolor"> </i>
@@ -317,6 +317,12 @@ body{
 
 .navlinks a{
   text-decoration:none;
+  color:black;
+  font-weight:400;
+  font-size:13px;
+}
+
+.nl{
   margin-right:15px;
   color:black;
   font-weight:400;
@@ -342,6 +348,7 @@ body{
 .av{
   position:fixed;
   width:100%;
+  z-index:50;
 }
 
 .navbg{
@@ -565,7 +572,6 @@ input:focus {
 .sbgg {
   display:none;
 }
-
 
 /* .scancel{
   flex-basis:20%;

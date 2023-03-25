@@ -66,6 +66,7 @@
     justify-content: space-between;
     width:75%;
     margin:auto;
+    padding-top:200px;
 }
 
 .ci{
@@ -120,5 +121,22 @@
     margin-bottom: 20px;
 }
 
+@media (max-width: 1000px){
+
+.cflex {
+    display: block;
+    padding-top:140px;
+}
+
+.mycoformm h3 {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 2.7rem;
+    color: #727171;
+    margin-top:60px;
+    padding-bottom: 15px;
+}
+
+}
 
 </style>

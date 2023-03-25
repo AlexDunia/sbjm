@@ -265,6 +265,7 @@ data(){
     display:flex;
     justify-content:space-between;
     width:85%;
+    padding-top:150px;
 }
 
 .productfleximg img{
@@ -362,5 +363,13 @@ additional square borders
     color: #0647B1;
     border: none;
 } */
+
+@media (max-width: 1000px){
+
+.productflex {
+    display: block;
+}
+
+}
 
 </style>

@@ -26,8 +26,7 @@
           <!-- <div  v-for="(info, index) in sizes" :key="index" @click="logItem(info)">
            <h3 className="nop"> {{ info.nop }} </h3>
            <h4 className="chose"> {{ info.price }} </h4>
-
-       </div> -->
+          </div> -->
       <div>
        <h3 className="nop"> {{ title }} </h3>
            <h4 className="chose"> {{ price }} </h4>
@@ -43,6 +42,7 @@
           className="btnsize">
           {{ button.label }}
           </button>
+
 
       <div class="ProductForm__QuantitySelector">
 
@@ -424,5 +424,31 @@
         color: #0647B1;
         border: none;
     } */
+
+
+    @media (max-width: 1000px){
+
+    .productflex {
+    display: block;
+    margin: auto;
+    padding-bottom:30px;
+    margin-bottom:50px;
+}
+
+.ProductForm__QuantitySelector{
+    margin-top:25px;
+}
+
+.productfleximg {
+    text-align: center;
+}
+
+.productfleximg img {
+    width:300px;
+    text-align: center;
+}
+
+
+}
 
     </style>
