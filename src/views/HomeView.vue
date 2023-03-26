@@ -92,8 +92,10 @@
   <p> <img :src="product.image"/> </p>
     <!-- <p className="pname"  @click="viewProduct(product.id)"> {{product.title}}  </p> -->
     <p className="pname"> <a> <router-link to="/product"> {{product.name}}  </router-link> </a></p>
+    <div class="catflex">
   <p className="pprice"> {{product.price}}  </p>
-  <p className="pprice"> {{product.category}}  </p>
+  <p className="pprice" id="cat"> {{product.category}}  </p>
+  </div>
   </div>
 
   </div>
@@ -342,6 +344,23 @@ export default {
 </script>
 <style>
 
+.catflex{
+  display:flex;
+  justify-content:space-between;
+  width:85%;
+}
+
+#cat{
+  background:#f0f1f1;
+  color:rgb(87, 86, 86);
+  /* padding:10px; */
+  align-items:center;
+text-align:center;
+  padding:0 10px 0 10px;
+  font-size:10px;
+  font-weight:500;
+}
+
 .hflex{
   display:flex;
   justify-content:space-between;
@@ -574,6 +593,12 @@ export default {
 
 .hflex{
   display:block;
+}
+
+.catflex{
+  display:flex;
+  justify-content:space-between;
+  width:100%;
 }
 
 .cil{
