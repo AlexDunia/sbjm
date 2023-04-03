@@ -74,17 +74,18 @@
 
   <!-- <div className="allproducts" v-for="(product, i) in products" :key="i"> -->
 
-    <!-- <div className="pw">
+    <div className="pw">
 
     <div className="pgridc">
   <div v-for="(product, i) in productlist" :key="i">
   <p> <img :src="product.image"/> </p>
-    <p className="pname"  @click="viewProduct(product.id)"> {{product.title}}  </p>
+    <!-- <p className="pname"  @click="viewProduct(product.id)"> {{product.title}}  </p> -->
+    <p className="pname"  @click="viewProduct(product.id)"> {{product.name}}  </p>
   <p className="pprice"> {{product.price}}  </p>
   </div>
 
   </div>
-  </div> -->
+  </div>
 
   <br/>
   <br/>
@@ -139,51 +140,51 @@ export default {
     products:[],
     // selectedProducts:{},
 
-      // products:[
-      // {
-      //   image: Pone,
-      //   name: "BLACKTOP",
-      //   price: "N30,000",
-      // },
+      productlist:[
+      {
+        image: Pone,
+        name: "BLACKTOP",
+        price: "N30,000",
+      },
 
-      // {
-      //   image: Ptwo,
-      //   name: "RUBYGOWN",
-      //   price: "N30,000",
-      // },
+      {
+        image: Ptwo,
+        name: "RUBYGOWN",
+        price: "N30,000",
+      },
 
-      // {
-      //   image: Pthree,
-      //   name: "ARITOP",
-      //   price: "N30,000",
-      // },
+      {
+        image: Pthree,
+        name: "ARITOP",
+        price: "N30,000",
+      },
 
-      // {
-      //   image: Pfour,
-      //   name: "BENNYBUBU",
-      //   price: "N30,000",
-      // },
-      // {
-      //   image: Pone,
-      //   name: "BLACKTOP",
-      //   price: "N30,000",
-      // },
-      // {
-      //   image: Ptwo,
-      //   name: "RUBYGOWN",
-      //   price: "N30,000",
-      // },
-      // {
-      //   image: Pthree,
-      //   name: "ARITOP",
-      //   price: "N30,000",
-      // },
-      // {
-      //   image: Pfour,
-      //   name: "BENNYBUBU",
-      //   price: "N30,000",
-      // },
-      // ]
+      {
+        image: Pfour,
+        name: "BENNYBUBU",
+        price: "N30,000",
+      },
+      {
+        image: Pone,
+        name: "BLACKTOP",
+        price: "N30,000",
+      },
+      {
+        image: Ptwo,
+        name: "RUBYGOWN",
+        price: "N30,000",
+      },
+      {
+        image: Pthree,
+        name: "ARITOP",
+        price: "N30,000",
+      },
+      {
+        image: Pfour,
+        name: "BENNYBUBU",
+        price: "N30,000",
+      },
+      ]
 
     }
   },
