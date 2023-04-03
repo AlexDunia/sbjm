@@ -580,7 +580,8 @@ input:focus {
 }
 
 #iconcolor{
-  display:none;
+  color: red;
+    font-size: 15px;
 }
 
 .navbg {

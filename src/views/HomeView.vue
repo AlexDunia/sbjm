@@ -127,7 +127,7 @@ export default {
     backgroundImageUrls:[
       {
         img: Oneimg,
-        name: "Check out our brand new 2023 collection",
+        name: "Checkk out our brand new 2023 collection",
         more: "A collection of all our latest categories",
       },
       {
@@ -530,7 +530,7 @@ export default {
 
 @media (max-width: 1200px){
 
-  .hflex{
+.hflex{
   display:block;
 }
 
