@@ -579,6 +579,10 @@ input:focus {
     font-size: 15px;
 }
 
+#iconcolor{
+  display:none;
+}
+
 .navbg {
     display:none;
 }
