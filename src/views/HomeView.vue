@@ -96,8 +96,9 @@
 
 <script>
 import Oneimg from '../assets/images/nita.png'
-import Twoimg from '../assets/images/fladycut.png'
-import Threeimg from '../assets/images/fladylong2.jpg'
+import Twoimg from '../assets/images/bj.png'
+import Threeimg from '../assets/images/orangee.png'
+// import Threeimg from '../assets/images/fladylong2.jpg'
 // Product images.
 import Pone from '../assets/images/flady.jpg'
 import Ptwo from '../assets/images/rubygown.jpg'
@@ -131,6 +132,11 @@ export default {
       },
       {
         img: Twoimg,
+        name: "Check out our brand new 2023 collection",
+        more: "A collection of all our latest categories",
+      },
+      {
+        img: Threeimg,
         name: "Check out our brand new 2023 collection",
         more: "A collection of all our latest categories",
       },

@@ -583,6 +583,11 @@ input:focus {
     display:none;
 }
 
+.navlinks {
+  display:none;
+}
+
+
 .sbgg {
   display:block;
 }
