@@ -96,7 +96,6 @@
 
 <div class="sinput">
   <input type="search" name="type" placeholder="Search here">
-  <i class="fa-solid fa-magnifying-glass fa-2x" id="iconcolortwo"></i>
 </div>
 
     <img src="./assets/images/sb.png" class="cartimg"/>
