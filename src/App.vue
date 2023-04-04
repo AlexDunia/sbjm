@@ -1,5 +1,6 @@
 <template>
 
+
   <div class="no" v-if="shownavmobile">
 
     <div class="fnavvv">
@@ -34,9 +35,12 @@
 
   </div>
 
+  <div class="av">
+
   <div className="logobg">
     <img src="./assets/images/sbjwhite.png"/>
   </div>
+
 
   <div class="navbg">
 
@@ -64,7 +68,7 @@
   </nav>
   </div>
 
-  <!-- <div class="sbg" v-if="shows">
+  <div class="sbg" v-if="shows">
 
     <div class="sflex">
 
@@ -82,7 +86,7 @@
 
     </div>
 
-  </div> -->
+  </div>
 
 
 
@@ -97,7 +101,7 @@
 <div class="sinput">
   <input type="search" name="type" placeholder="Search here">
 </div>
-<i class="fa-solid fa-cart-shopping"></i>
+<i class="fa-solid fa-cart-shopping" id="iconcolor"></i>
     <!-- <img src="./assets/images/sb.png" class="cartimg"/> -->
     <span class="dottwo">6</span>
     <i class="fa-solid fa-bars fa-2x" @click="navmobiletoggle()" id="iconcolor"> </i>
@@ -119,6 +123,8 @@
     <a> <router-link to="/"> Swim Wear </router-link> </a>
     <a> <router-link to="/"> Swim Cover </router-link> </a>
     <a> <router-link to="/cart"> My Cart </router-link> </a>
+
+</div>
 
 </div>
   <router-view :atc="addtocart" :buttonz="buttons" :increasev="increasevalue" :decreasev="decreasevalue" :hdc="handleClick" :productlist="products" :selected="selectedProducts" :viewProduct="(id) => getProductDetails(id)"/>
@@ -333,6 +339,11 @@ body{
   flex-basis: 100%;
 }
 
+.av{
+  position:fixed;
+  width:100%;
+}
+
 .navbg{
   padding-top:10px;
   /* margin-bottom:30px; */
@@ -455,7 +466,6 @@ body{
 }
 
 .sinput input {
-    background: rgba(242, 255, 246, 0.7);
     border: none;
     width: 85%;
     margin: auto;
@@ -565,13 +575,14 @@ input:focus {
 
 @media (max-width: 1000px){
   #iconcolortwo {
-    color: rgba(95, 94, 94, 0.6);
-    font-size: 15px;
+    /* color: rgba(95, 94, 94, 0.6); */
+    color:black;
+    font-size: 18px;
 }
 
 #iconcolor{
-  color: red;
-    font-size: 15px;
+  color:black;
+    font-size: 18px;
 }
 
 .navbg {
@@ -592,7 +603,9 @@ input:focus {
 }
 
 .sinput input {
-    background: rgba(242, 255, 246, 0.7);
+  /* background: transparant; */
+  background: transparent;
+    /* background: rgba(242, 255, 246, 0.7); */
     border: none;
     width: 100%;
     margin: auto;

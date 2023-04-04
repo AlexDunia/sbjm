@@ -328,6 +328,7 @@ export default {
 
 .hbg{
   background:#F1F2F4;
+  padding-top:200px;
 }
 
 .himg img{
