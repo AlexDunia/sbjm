@@ -64,7 +64,7 @@
   </nav>
   </div>
 
-  <div class="sbg" v-if="shows">
+  <!-- <div class="sbg" v-if="shows">
 
     <div class="sflex">
 
@@ -82,20 +82,21 @@
 
     </div>
 
-  </div>
+  </div> -->
 
 
 
-<!-- <div class="sbgg">
+<div class="sbgg">
 
 <div class="sflex">
 
-  <div class="smain">
+  <!-- <div class="smain">
   <i class="fa-solid fa-magnifying-glass fa-2x" id="iconcolortwo"> </i>
-</div>
+</div> -->
 
 <div class="sinput">
   <input type="search" name="type" placeholder="Search here">
+  <i class="fa-solid fa-magnifying-glass fa-2x" id="iconcolortwo"></i>
 </div>
 
     <img src="./assets/images/sb.png" class="cartimg"/>
@@ -104,7 +105,7 @@
 
 </div>
 
-</div> -->
+</div>
 
 
 
