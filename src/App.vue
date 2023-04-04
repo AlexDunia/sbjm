@@ -64,7 +64,7 @@
   </nav>
   </div>
 
-  <div class="sbg" v-if="shows">
+  <!-- <div class="sbg" v-if="shows">
 
     <div class="sflex">
 
@@ -73,7 +73,6 @@
     </div>
 
     <div class="sinput">
-      <!-- <input placeholder="enter text here">  -->
       <input type="search" name="type" placeholder="Search">
     </div>
 
@@ -83,7 +82,7 @@
 
     </div>
 
-  </div>
+  </div> -->
 
 
 
