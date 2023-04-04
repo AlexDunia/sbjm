@@ -594,7 +594,7 @@ input:focus {
 .sinput input {
     background: rgba(242, 255, 246, 0.7);
     border: none;
-    width: 70%;
+    width: 100%;
     margin: auto;
     align-items: center;
     color: black;
@@ -605,7 +605,7 @@ input:focus {
 
 .cartimg{
   width: 23px;
-  /* margin-left:20px; */
+  margin-left:0;
 }
 
 .dottwo {
