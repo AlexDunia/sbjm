@@ -97,8 +97,8 @@
 <div class="sinput">
   <input type="search" name="type" placeholder="Search here">
 </div>
-
-    <img src="./assets/images/sb.png" class="cartimg"/>
+<i class="fa-solid fa-cart-shopping"></i>
+    <!-- <img src="./assets/images/sb.png" class="cartimg"/> -->
     <span class="dottwo">6</span>
     <i class="fa-solid fa-bars fa-2x" @click="navmobiletoggle()" id="iconcolor"> </i>
 
