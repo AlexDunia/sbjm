@@ -333,7 +333,7 @@ export default {
 
 .himg img{
   /* width:100%; */
-  width:400px;
+  width:300px;
 }
 
 .himg{
