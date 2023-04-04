@@ -64,7 +64,7 @@
   </nav>
   </div>
 
-  <!-- <div class="sbg" v-if="shows">
+  <div class="sbg" v-if="shows">
 
     <div class="sflex">
 
@@ -82,11 +82,11 @@
 
     </div>
 
-  </div> -->
+  </div>
 
 
 
-<div class="sbgg">
+<!-- <div class="sbgg">
 
 <div class="sflex">
 
@@ -95,25 +95,16 @@
 </div>
 
 <div class="sinput">
-  <!-- <input placeholder="enter text here">  -->
   <input type="search" name="type" placeholder="Search here">
 </div>
 
     <img src="./assets/images/sb.png" class="cartimg"/>
     <span class="dottwo">6</span>
     <i class="fa-solid fa-bars fa-2x" @click="navmobiletoggle()" id="iconcolor"> </i>
-    <!-- <i class="fa-solid fa-xmark fa-2x" @click="navtoggle()" v-if="shownav" id="iconcolor"></i> -->
 
-<!-- <div class="scancel">
-     <img src="./assets/images/sb.png"/>
-     <span class="dot">6</span>
-    <i class="fa-solid fa-bars fa-2x" @click="navtoggle()" v-if="!shownav" id="iconcolor"> </i>
-    <i class="fa-solid fa-xmark fa-2x" @click="navtoggle()" v-if="shownav" id="iconcolor"></i>
+</div>
+
 </div> -->
-
-</div>
-
-</div>
 
 
 

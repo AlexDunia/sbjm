@@ -132,7 +132,7 @@ export default {
       },
       {
         img: Twoimg,
-        name: "Check out our brand new 2023 collection",
+        name: "Checkk out our brand new 2023 collection",
         more: "A collection of all our latest categories",
       },
       {
