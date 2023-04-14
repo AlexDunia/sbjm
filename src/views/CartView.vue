@@ -12,10 +12,9 @@
 
 
     <!-- {{ myc }} -->
-
         <div class="maincartflex">
-            <div>
-        <div class="cartflex">
+
+        <!-- <div class="cartflex">
 
             <div class="cartimg">
                 <img src="../assets/images/flady.jpg">
@@ -28,25 +27,7 @@
                 <h4> Remove from cart </h4>
             </div>
 
-        </div>
-
-        <div class="cartflex">
-
-<div class="cartimg">
-    <img src="../assets/images/flady.jpg">
-</div>
-
-<div class="carttext">
-    <h3> Linear Green Plated pants </h3>
-    <p class="carttextp"> Quantity: <span class="qp"> 2 </span> </p>
-    <p class="carttexts"> Size: <span class="qp"> XXL </span> </p>
-    <h4> Remove from cart </h4>
-</div>
-
-</div>
-
-</div>
-
+        </div> -->
 
         <div>
 
@@ -132,7 +113,7 @@
 
     </div>
 
-    <button class="wlbtnn" type="submit">  Proceed to checkout </button>
+    <button class="wlbtnn" type="submit" @click="ck">  Proceed to checkout </button>
 
         </div>
 
@@ -143,6 +124,7 @@
     <script>
      import Try from '@/components/cp.vue';
     export default {
+      props: ['ck'],
       components: {
         Try
       },
@@ -180,6 +162,7 @@
         }
       }
     }
+
     </script>
 
     <style>

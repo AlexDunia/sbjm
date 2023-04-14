@@ -90,11 +90,12 @@
     <div className="pgridc">
   <div v-for="(product, i) in productlist" :key="i">
   <p> <img :src="product.image"/> </p>
-    <!-- <p className="pname"  @click="viewProduct(product.id)"> {{product.title}}  </p> -->
-    <p className="pname"> <a> <router-link to="/product"> {{product.name}}  </router-link> </a></p>
+    <p className="pname"  @click="viewProduct(product.id)"> {{product.title}}  </p>
+    <!-- <p className="pname"> <a> <router-link to="/product"> {{product.title}}  </router-link> </a></p> -->
     <div class="catflex">
   <p className="pprice"> {{product.price}}  </p>
-  <p className="pprice" id="cat"> {{product.category}}  </p>
+  <!-- <p className="pprice" id="cat"> {{product.category}}  </p> -->
+  <p className="pprice" id="cat"> Category  </p>
   </div>
   </div>
 
@@ -126,7 +127,7 @@ import { getTransitionRawChildren } from 'vue'
 import axios from 'axios'
 
 export default {
-  props: ['productlist', 'selected', 'viewProduct',],
+  props: ['productlist', 'selected', 'viewProduct', 'products'],
 
   data(){
     return{
@@ -160,62 +161,62 @@ export default {
     ],
 
     currentImageIndex: 0,
-    products:[],
+    // products:[],
     // selectedProducts:{},
 
-      productlist:[
-      {
-        image: Pone,
-        name: "BLACKTOP",
-        price: "N30,000",
-        category: "category",
-      },
+      // productlist:[
+      // {
+      //   image: Pone,
+      //   name: "BLACKTOP",
+      //   price: "N30,000",
+      //   category: "category",
+      // },
 
-      {
-        image: Ptwo,
-        name: "RUBYGOWN",
-        price: "N30,000",
-        category: "category",
-      },
+      // {
+      //   image: Ptwo,
+      //   name: "RUBYGOWN",
+      //   price: "N30,000",
+      //   category: "category",
+      // },
 
-      {
-        image: Pthree,
-        name: "ARITOP",
-        price: "N30,000",
-        category: "category",
-      },
+      // {
+      //   image: Pthree,
+      //   name: "ARITOP",
+      //   price: "N30,000",
+      //   category: "category",
+      // },
 
-      {
-        image: Pfour,
-        name: "BENNYBUBU",
-        price: "N30,000",
-        category: "category",
-      },
-      {
-        image: Pone,
-        name: "BLACKTOP",
-        price: "N30,000",
-        category: "category",
-      },
-      {
-        image: Ptwo,
-        name: "RUBYGOWN",
-        price: "N30,000",
-        category: "category",
-      },
-      {
-        image: Pthree,
-        name: "ARITOP",
-        price: "N30,000",
-        category: "category",
-      },
-      {
-        image: Pfour,
-        name: "BENNYBUBU",
-        price: "N30,000",
-        category: "category",
-      },
-      ]
+      // {
+      //   image: Pfour,
+      //   name: "BENNYBUBU",
+      //   price: "N30,000",
+      //   category: "category",
+      // },
+      // {
+      //   image: Pone,
+      //   name: "BLACKTOP",
+      //   price: "N30,000",
+      //   category: "category",
+      // },
+      // {
+      //   image: Ptwo,
+      //   name: "RUBYGOWN",
+      //   price: "N30,000",
+      //   category: "category",
+      // },
+      // {
+      //   image: Pthree,
+      //   name: "ARITOP",
+      //   price: "N30,000",
+      //   category: "category",
+      // },
+      // {
+      //   image: Pfour,
+      //   name: "BENNYBUBU",
+      //   price: "N30,000",
+      //   category: "category",
+      // },
+      // ]
 
     }
   },
@@ -263,18 +264,18 @@ export default {
 // },
 
 
-// getProductDetails(productId) {
-//   console.log(productId);
-//   axios.post('http://localhost/gpd.php', { id: productId })
-//     .then(response => {
-//       this.selectedProducts = response.data
-//       console.log(this.selectedProducts);
-//     })
-//     .catch(error => {
-//       console.error(error);
-//       console.log(error.response.data);
-//     });
-// },
+getProductDetails(productId) {
+  console.log(productId);
+  axios.post('http://localhost/gpd.php', { id: productId })
+    .then(response => {
+      this.selectedProducts = response.data
+      console.log(this.selectedProducts);
+    })
+    .catch(error => {
+      console.error(error);
+      console.log(error.response.data);
+    });
+},
 
 
       showNextImage() {
@@ -343,6 +344,12 @@ export default {
 
 </script>
 <style>
+
+.pname{
+  text-decoration: none;
+    color: #81A695;
+    font-weight: 500;
+}
 
 .catflex{
   display:flex;

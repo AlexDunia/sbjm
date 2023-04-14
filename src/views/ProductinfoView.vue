@@ -40,9 +40,10 @@
 
         <!-- When working with an array, you could either use an index and place it in as a parameter like we are used to
         or we do it the new way of picking that one directly -->
-        <button v-for="(button, index) in buttons" :key="button.label"  @click="handleClick(button.label)"
-        :style="{ borderColor: currentBorderColor === index ? '#26A76B' : 'transparent' }"
-        className="btnsize">
+        <button v-for="(button, index) in buttons" :key="button.label"
+            @click="handleClick(button, index)"
+            :style="{ borderColor: currentBorderColor === index ? '#26A76B' : 'transparent' }"
+            class="btnsize">
       {{ button.label }}
     </button>
 
@@ -84,9 +85,10 @@ export default {
 
 data(){
     return{
+      currentBorderColor: index,
 
         buttons: [
-        { id: 1, label: "S" },
+        { id: 1, label: "Small" },
         { id: 2, label: "Medium" },
         { id: 3, label: "Large" },
         { id: 3, label: "XL" },
@@ -186,9 +188,11 @@ data(){
         console.log(this.sizes)
     },
 
-    handleClick(btnn) {
-        this.sizes['clsize'] = btnn
-        console.log(this.sizes)
+    handleClick(btnn, index) {
+      this.sizes['clsize'] = btnn;
+      this.currentBorderColor = index;
+      console.log(this.sizes);
+    },
         // this.currentBorderColor[btnn]= index
         // this.currentBorderColor= this.currentBorderColor[btnn] === "transparent" ? '#26A76B' : "transparent";
 
@@ -213,7 +217,7 @@ data(){
     //     this.selectedItems.splice(0)
     //   }
     //   console.log(this.selectedItems)
-    },
+
 
 
         // this.sizes.splice(btnn)
@@ -244,28 +248,34 @@ data(){
     //   this.currentBorderColor= this.currentBorderColor[id] === "transparent" ? '#26A76B' : "transparent";
     },
 
-    changeColor() {
-        this.currentBorderColor= this.currentBorderColor === "transparent" ? '#26A76B' : "transparent";
-        if (this.selectedItems.length === 0 ) {
-        // Add item
-        this.selectedItems.push(this.s)
-      }else
-      {
-        this.selectedItems.splice(this.s)
-      }
-      console.log(this.selectedItems)
-    }
+    // changeColor() {
+    //     this.currentBorderColor= this.currentBorderColor === "transparent" ? '#26A76B' : "transparent";
+    //     if (this.selectedItems.length === 0 ) {
+    //     // Add item
+    //     this.selectedItems.push(this.s)
+    //   }else
+    //   {
+    //     this.selectedItems.splice(this.s)
+    //   }
+    //   console.log(this.selectedItems)
+    // }
+
   }
 
 </script>
 
 <style>
 
+.ProductForm__QuantitySelector{
+  margin-top:15px;
+}
+
 .productflex{
     display:flex;
     justify-content:space-between;
     width:85%;
-    padding-top:150px;
+    padding-top:215px;
+    margin:auto;
 }
 
 .productfleximg img{

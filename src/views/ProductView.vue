@@ -76,218 +76,217 @@
     <script>
       import {vue} from 'vue';
       import Try from '@/components/cp.vue';
-    export default {
-      components: {
-        Try
-      },
-    data(){
-        return{
+export default {
+  components: {
+    Try
+  },
+data(){
+    return{
 
-          cart: [],
-          product: {},
-          localStorageArray: [],
-          title: localStorage.getItem('title'),
-          price: localStorage.getItem('price'),
-          image: localStorage.getItem('image'),
+      cart: [],
+      product: {},
+      localStorageArray: [],
+      title: localStorage.getItem('title'),
+      price: localStorage.getItem('price'),
+      image: localStorage.getItem('image'),
 
-          mounted() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            this.cart = cart;
+      mounted() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        this.cart = cart;
 
-          axios.get('http://localhost/gpd.php?id=' + this.$route.params.id)
-          .then(response => {
-           // this.product = this.selected,
-           this.product = response.data
-        // localStorage.getItem('id', productId);
-      });
+      axios.get('http://localhost/gpd.php?id=' + this.$route.params.id)
+      .then(response => {
+       // this.product = this.selected,
+       this.product = response.data
+    // localStorage.getItem('id', productId);
+  });
 
-    // const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    //     this.cart = cart;
+// const cart = JSON.parse(localStorage.getItem('cart')) || [];
+//     this.cart = cart;
 
-    },
+},
 
-            buttons: [
-            { id: 1, label: "S" },
-            { id: 2, label: "Medium" },
-            { id: 3, label: "Large" },
-            { id: 3, label: "XL" },
-            { id: 3, label: "XXL" },
-            { id: 3, label: "X" },
-          ],
+        buttons: [
+        { id: 1, label: "S" },
+        { id: 2, label: "Medium" },
+        { id: 3, label: "Large" },
+        { id: 3, label: "XL" },
+        { id: 3, label: "XXL" },
+        { id: 3, label: "X" },
+      ],
 
-          // s: "Small",
-          // m: "Medium",
-          // l: "Large",
-          // e: "Extra Large",
-          // xxl: "XXL",
-          // x: "X",
+      // s: "Small",
+      // m: "Medium",
+      // l: "Large",
+      // e: "Extra Large",
+      // xxl: "XXL",
+      // x: "X",
 
-            sizes:[
-              {
-                nop: localStorage.getItem('title'),
-              },
-              {
-                price: localStorage.getItem('price'),
-              },
-              {
-                clsize:""
-              },
-              {
-                quantity: 0,
-              },
-              {
-                img: localStorage.getItem('image'),
-              },
-            ],
-                //   {
-                //     nop: "LINEAR GREEN PLEATED PANTS",
-                // },
-                // {
-                //    price: "30,000",
-                // },
-                // {
-                //    clsize: "",
-                // },
-                // {
-                //    quantity: 1,
-                // },
-
-            increaseAmount: 1,
-            selectedItems: [],
-
-        };
-      },
-
-      // computed: {
-      //   cartItems() {
-      //     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-      //     return cart.map(item => ({
-      //       // id: item.id,
-      //       name: item.title,
-      //       price: item.price,
-      //       quantity: item.quantity || 1
-      //     }));
-      //   }
-      // },
-
-      methods: {
-
-      //  addtocart() {
-      //     const newItem = {
-      //       quantity: this.sizes.quantity,
-      //     };
-      //     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      //     cart.push(newItem);
-      //     localStorage.setItem('cart', JSON.stringify(cart));
-      //     this.cart = cart;
-      //     console.log(this.cart);
-      //   },
-
-      addtocart() {
-      const newItem = { sizes: { ...this.sizes } };
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-      cart.push(newItem);
-
-      localStorage.setItem('cart', JSON.stringify(cart));
-
-      this.cart = cart;
-
-      console.log(this.cart);
-    },
-
-    // addtocart() {
-    //     const newItem = { ...this.sizes };
-    //     if (!this.cart[this.title]) {
-    //       this.cart[this.title] = [];
-    //     }
-    //     this.cart[this.title].push(newItem);
-    //     console.log(this.cart);
-    //   },
-
-
-    //     addtocart() {
-    //   const newItem = {
-    //     size: this.sizes.nop,
-    //     color: this.sizes.price,
-    //     quantity: this.sizes.quantity
-    //   };
-    //   this.cart.push(newItem);
-    //   console.log(this.cart);
-    // },
-
-    // addtocart() {
-    //     const existingItem = this.sizes.find(item => item.title === this.title)
-    //     if (existingItem) {
-    //       existingItem.quantity++
-    //     } else {
-    //       this.cartItems.push({
-    //         id: this.product.id,
-    //         name: this.product.name,
-    //         price: this.product.price,
-    //         quantity: 1
-    //       })
-    //     };
-    //   },
-
-        // addtocart() {
-        //   let item = this.cart.find((i) => i.nop === this.sizes.nop);
-        //   if (item) {
-        //     item.quantity++;
-        //   } else {
-        //     this.cart.push(this.sizes);
-        //     console.log(this.cart)
-        //   }
-        // },
-
-    // i want to click on add to cart and store all my items in an array, I think i will be using push here.
-
-    // increaseValue() {
-    //     this.sizes['quantity'] += this.increaseAmount;
-    //     console.log(this.sizes['quantity']);
-    //   },
-
-          increasevalue(){
-            this.sizes[3].quantity = ++document.getElementById('vi').value;
-            console.log(this.sizes)
-        },
-
-    //         increaseValue() {
-    //   const quantity = ++document.getElementById('vi').value;
-    //   localStorage.setItem('quantity', this.sizes['quantity']);
-    //   console.log(quantity);
-    // },
-
-
-        decreasevalue(){
-            this.sizes['quantity'] = document.getElementById('vi').value --;
-            if(document.getElementById('vi').value <= 1 ){
-                document.getElementById('vi').value  = 1
-            }
-            console.log(this.sizes)
-        },
-
-        handleClick(btnn) {
-          this.sizes[2].clsize = btnn
-            // console.log(this.sizes)
-        },
-
-        },
-
-        changeColor() {
-            this.currentBorderColor= this.currentBorderColor === "transparent" ? '#26A76B' : "transparent";
-            if (this.selectedItems.length === 0 ) {
-            // Add item
-            this.selectedItems.push(this.s)
-          }else
+        sizes:[
           {
-            this.selectedItems.splice(this.s)
-          }
-          console.log(this.selectedItems)
-        }
-      }
+            nop: localStorage.getItem('title'),
+          },
+          {
+            price: localStorage.getItem('price'),
+          },
+          {
+            clsize:""
+          },
+          {
+            quantity: 0,
+          },
+          {
+            img: localStorage.getItem('image'),
+          },
+        ],
+            //   {
+            //     nop: "LINEAR GREEN PLEATED PANTS",
+            // },
+            // {
+            //    price: "30,000",
+            // },
+            // {
+            //    clsize: "",
+            // },
+            // {
+            //    quantity: 1,
+            // },
 
+        increaseAmount: 1,
+        selectedItems: [],
+
+    };
+  },
+
+  // computed: {
+  //   cartItems() {
+  //     const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  //     return cart.map(item => ({
+  //       // id: item.id,
+  //       name: item.title,
+  //       price: item.price,
+  //       quantity: item.quantity || 1
+  //     }));
+  //   }
+  // },
+
+  methods: {
+
+  //  addtocart() {
+  //     const newItem = {
+  //       quantity: this.sizes.quantity,
+  //     };
+  //     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  //     cart.push(newItem);
+  //     localStorage.setItem('cart', JSON.stringify(cart));
+  //     this.cart = cart;
+  //     console.log(this.cart);
+  //   },
+
+  addtocart() {
+  const newItem = { sizes: { ...this.sizes } };
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  cart.push(newItem);
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+  this.cart = cart;
+
+  console.log(this.cart);
+},
+
+// addtocart() {
+//     const newItem = { ...this.sizes };
+//     if (!this.cart[this.title]) {
+//       this.cart[this.title] = [];
+//     }
+//     this.cart[this.title].push(newItem);
+//     console.log(this.cart);
+//   },
+
+
+//     addtocart() {
+//   const newItem = {
+//     size: this.sizes.nop,
+//     color: this.sizes.price,
+//     quantity: this.sizes.quantity
+//   };
+//   this.cart.push(newItem);
+//   console.log(this.cart);
+// },
+
+// addtocart() {
+//     const existingItem = this.sizes.find(item => item.title === this.title)
+//     if (existingItem) {
+//       existingItem.quantity++
+//     } else {
+//       this.cartItems.push({
+//         id: this.product.id,
+//         name: this.product.name,
+//         price: this.product.price,
+//         quantity: 1
+//       })
+//     };
+//   },
+
+    // addtocart() {
+    //   let item = this.cart.find((i) => i.nop === this.sizes.nop);
+    //   if (item) {
+    //     item.quantity++;
+    //   } else {
+    //     this.cart.push(this.sizes);
+    //     console.log(this.cart)
+    //   }
+    // },
+
+// i want to click on add to cart and store all my items in an array, I think i will be using push here.
+
+// increaseValue() {
+//     this.sizes['quantity'] += this.increaseAmount;
+//     console.log(this.sizes['quantity']);
+//   },
+
+      increasevalue(){
+        this.sizes[3].quantity = ++document.getElementById('vi').value;
+        console.log(this.sizes)
+    },
+
+//         increaseValue() {
+//   const quantity = ++document.getElementById('vi').value;
+//   localStorage.setItem('quantity', this.sizes['quantity']);
+//   console.log(quantity);
+// },
+
+
+    decreasevalue(){
+        this.sizes['quantity'] = document.getElementById('vi').value --;
+        if(document.getElementById('vi').value <= 1 ){
+            document.getElementById('vi').value  = 1
+        }
+        console.log(this.sizes)
+    },
+
+    handleClick(btnn) {
+      this.sizes[2].clsize = btnn
+        // console.log(this.sizes)
+    },
+
+    },
+
+    changeColor() {
+        this.currentBorderColor= this.currentBorderColor === "transparent" ? '#26A76B' : "transparent";
+        if (this.selectedItems.length === 0 ) {
+        // Add item
+        this.selectedItems.push(this.s)
+      }else
+      {
+        this.selectedItems.splice(this.s)
+      }
+      console.log(this.selectedItems)
+    }
+  }
     </script>
 
       <!-- <script>
@@ -323,7 +322,7 @@
     <style>
 
 
-    .productflex{
+    /* .productflex{
         display:flex;
         justify-content:space-between;
         width:85%;
@@ -331,7 +330,7 @@
 
     .productfleximg img{
         width:600px;
-    }
+    } */
 
     /* .productflexinfo h3{
         color: #81A695;

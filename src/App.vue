@@ -150,14 +150,14 @@ export default{
     }
   },
 
-  // mounted() {
-  //   fetch("http://localhost/index.php")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       this.products = data;
-  //       console.log(this.products)
-  //     });
-  //   },
+  mounted() {
+    fetch("http://localhost/index.php")
+      .then((response) => response.json())
+      .then((data) => {
+        this.products = data;
+        console.log(this.products)
+      });
+    },
 
     computed: {
     myccc() {
