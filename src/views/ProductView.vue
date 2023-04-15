@@ -1,189 +1,201 @@
 <template>
-    <!-- <div v-for="item in cartItems" :key="item.id">
-          <h2>{{ item.name }}</h2>
-          <p>Price: {{ item.price }}</p>
-          <p>Quantity: {{ item.quantity }}</p>
+  <!-- <div v-for="item in cartItems" :key="item.id">
+        <h2>{{ item.name }}</h2>
+        <p>Price: {{ item.price }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+      </div> -->
+
+      <!-- <ul>
+        <li v-for="(item, index) in localStorageArray" :key="index">
+          {{ item.nop }}
+        </li>
+        </ul> -->
+        <div v-if="cartNotificationVisible" class="cartnotification-wrapper">
+        <div class="cartnotification">
+     <p> <i class="fa-regular fa-circle-check"></i> Your product has been added to cart </p>
+    </div>
+    </div>
+
+    <div className="productflex">
+
+    <div className="productfleximg">
+      <img :src="image" alt="Image">
+    </div>
+
+    <div className="productflexinfo">
+        <br/>
+        <br/>
+        <br/>
+        <!-- <div  v-for="(info, index) in sizes" :key="index" @click="logItem(info)">
+         <h3 className="nop"> {{ info.nop }} </h3>
+         <h4 className="chose"> {{ info.price }} </h4>
         </div> -->
+    <div>
+     <h3 className="nop"> {{ title }} </h3>
+         <h4 className="chose"> {{ price }} </h4>
+         <!-- <img src="{{ image }}"/> -->
 
-        <!-- <ul>
-          <li v-for="(item, index) in localStorageArray" :key="index">
-            {{ item.nop }}
-          </li>
-          </ul> -->
+    </div>
 
+        <!-- When working with an array, you could either use an index and place it in as a parameter like we are used to
+        or we do it the new way of picking that one directly -->
 
-
-      <div className="productflex">
-
-      <div className="productfleximg">
-        <img :src="image" alt="Image">
-      </div>
-
-      <div className="productflexinfo">
-          <br/>
-          <br/>
-          <br/>
-          <!-- <div  v-for="(info, index) in sizes" :key="index" @click="logItem(info)">
-           <h3 className="nop"> {{ info.nop }} </h3>
-           <h4 className="chose"> {{ info.price }} </h4>
-          </div> -->
-      <div>
-       <h3 className="nop"> {{ title }} </h3>
-           <h4 className="chose"> {{ price }} </h4>
-           <!-- <img src="{{ image }}"/> -->
-
-      </div>
-
-          <!-- When working with an array, you could either use an index and place it in as a parameter like we are used to
-          or we do it the new way of picking that one directly -->
-
-          <button v-for="(button, index) in buttons" :key="button.label"  @click="handleClick(button.label)"
-          :style="{ borderColor: currentBorderColor === index ? '#26A76B' : 'transparent' }"
-          className="btnsize">
-          {{ button.label }}
-          </button>
+        <button v-for="(button, index) in buttons" :key="button.label"  @click="handleClick(button.label)"
+        :style="{ borderColor: currentBorderColor === index ? '#26A76B' : 'transparent' }"
+        className="btnsize">
+        {{ button.label }}
+        </button>
 
 
-      <div class="ProductForm__QuantitySelector">
+    <div class="ProductForm__QuantitySelector">
 
-          <div class="QuantitySelector QuantitySelector--large"><span class="QuantitySelector__Button Link Link--secondary" data-action="decrease-quantity">
-              <svg class="Icon Icon--minus" role="presentation" viewBox="0 0 16 2" @click="decreasevalue">
-        <path d="M1,1 L15,1" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"></path>
+        <div class="QuantitySelector QuantitySelector--large"><span class="QuantitySelector__Button Link Link--secondary" data-action="decrease-quantity">
+            <svg class="Icon Icon--minus" role="presentation" viewBox="0 0 16 2" @click="decreasevalue">
+      <path d="M1,1 L15,1" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square"></path>
 
-      </svg>
-    </span>
-            <input type="number" class="QuantitySelector__CurrentQuantity" pattern="[0-9]*" name="quantity"  placeholder="0"  id="vi">
+    </svg>
+  </span>
+          <input type="number" class="QuantitySelector__CurrentQuantity" pattern="[0-9]*" name="quantity"  placeholder="0"  id="vi">
 
-            <span class="QuantitySelector__Button Link Link--secondary" data-action="increase-quantity">
-              <svg class="Icon Icon--plus" role="presentation" viewBox="0 0 16 16" @click="increasevalue">
-        <g stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square">
-          <path d="M8,1 L8,15"></path>
-          <path d="M1,8 L15,8"></path>
-        </g>
-      </svg>
-    </span>
+          <span class="QuantitySelector__Button Link Link--secondary" data-action="increase-quantity">
+            <svg class="Icon Icon--plus" role="presentation" viewBox="0 0 16 16" @click="increasevalue">
+      <g stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <path d="M8,1 L8,15"></path>
+        <path d="M1,8 L15,8"></path>
+      </g>
+    </svg>
+  </span>
 
-          </div>
         </div>
-
-        <button class="wlbtnn" type="submit" @click="addtocart">  Add to Cart</button>
-
       </div>
+      {{ cartLength }}
+      <button class="wlbtnn" type="submit" @click="addtocart"> Add to Cart</button>
+
+    </div>
 
 
-      </div>
-    </template>
-    <script>
-      import {vue} from 'vue';
-      import Try from '@/components/cp.vue';
+    </div>
+  </template>
+  <script>
+    import {vue} from 'vue';
+    import Try from '@/components/cp.vue';
 export default {
-  components: {
-    Try
-  },
+// props: ['addtocart', 'buttons'],
+components: {
+  Try
+},
 data(){
-    return{
+  return{
+    cartLength: 0, // Add this property
+    cart: [],
+    product: {},
+    localStorageArray: [],
+    title: localStorage.getItem('title'),
+    price: localStorage.getItem('price'),
+    image: localStorage.getItem('image'),
+    cartNotificationVisible: false,
 
-      cart: [],
-      product: {},
-      localStorageArray: [],
-      title: localStorage.getItem('title'),
-      price: localStorage.getItem('price'),
-      image: localStorage.getItem('image'),
+    mounted() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      this.cart = cart;
 
-      mounted() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        this.cart = cart;
+    axios.get('http://localhost/gpd.php?id=' + this.$route.params.id)
+    .then(response => {
+     // this.product = this.selected,
+     this.product = response.data
+  // localStorage.getItem('id', productId);
 
-      axios.get('http://localhost/gpd.php?id=' + this.$route.params.id)
-      .then(response => {
-       // this.product = this.selected,
-       this.product = response.data
-    // localStorage.getItem('id', productId);
-  });
+//   const cart = JSON.parse(localStorage.getItem('cart')) || [];
+// this.cart = cart;
+
+// this.cartLength = localStorage.getItem('cartLength') || 0;
+});
 
 // const cart = JSON.parse(localStorage.getItem('cart')) || [];
 //     this.cart = cart;
 
 },
 
-        buttons: [
-        { id: 1, label: "S" },
-        { id: 2, label: "Medium" },
-        { id: 3, label: "Large" },
-        { id: 3, label: "XL" },
-        { id: 3, label: "XXL" },
-        { id: 3, label: "X" },
+      buttons: [
+      { id: 1, label: "S" },
+      { id: 2, label: "Medium" },
+      { id: 3, label: "Large" },
+      { id: 3, label: "XL" },
+      { id: 3, label: "XXL" },
+      { id: 3, label: "X" },
+    ],
+
+    // s: "Small",
+    // m: "Medium",
+    // l: "Large",
+    // e: "Extra Large",
+    // xxl: "XXL",
+    // x: "X",
+
+      sizes:[
+        {
+          nop: localStorage.getItem('title'),
+        },
+        {
+          price: localStorage.getItem('price'),
+        },
+        {
+          clsize:""
+        },
+        {
+          quantity: 0,
+        },
+        {
+          img: localStorage.getItem('image'),
+        },
       ],
 
-      // s: "Small",
-      // m: "Medium",
-      // l: "Large",
-      // e: "Extra Large",
-      // xxl: "XXL",
-      // x: "X",
+          //   {
+          //     nop: "LINEAR GREEN PLEATED PANTS",
+          // },
+          // {
+          //    price: "30,000",
+          // },
+          // {
+          //    clsize: "",
+          // },
+          // {
+          //    quantity: 1,
+          // },
 
-        sizes:[
-          {
-            nop: localStorage.getItem('title'),
-          },
-          {
-            price: localStorage.getItem('price'),
-          },
-          {
-            clsize:""
-          },
-          {
-            quantity: 0,
-          },
-          {
-            img: localStorage.getItem('image'),
-          },
-        ],
-            //   {
-            //     nop: "LINEAR GREEN PLEATED PANTS",
-            // },
-            // {
-            //    price: "30,000",
-            // },
-            // {
-            //    clsize: "",
-            // },
-            // {
-            //    quantity: 1,
-            // },
+      // increaseAmount: 1,
+      // selectedItems: [],
 
-        increaseAmount: 1,
-        selectedItems: [],
 
-    };
-  },
+  };
+},
 
-  // computed: {
-  //   cartItems() {
-  //     const cart = JSON.parse(localStorage.getItem('cart')) || [];
+// computed: {
+//   cartItems() {
+//     const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  //     return cart.map(item => ({
-  //       // id: item.id,
-  //       name: item.title,
-  //       price: item.price,
-  //       quantity: item.quantity || 1
-  //     }));
-  //   }
-  // },
+//     return cart.map(item => ({
+//       // id: item.id,
+//       name: item.title,
+//       price: item.price,
+//       quantity: item.quantity || 1
+//     }));
+//   }
+// },
 
-  methods: {
+methods: {
 
-  //  addtocart() {
-  //     const newItem = {
-  //       quantity: this.sizes.quantity,
-  //     };
-  //     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  //     cart.push(newItem);
-  //     localStorage.setItem('cart', JSON.stringify(cart));
-  //     this.cart = cart;
-  //     console.log(this.cart);
-  //   },
-
+//  addtocart() {
+//     const newItem = {
+//       quantity: this.sizes.quantity,
+//     };
+//     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+//     cart.push(newItem);
+//     localStorage.setItem('cart', JSON.stringify(cart));
+//     this.cart = cart;
+//     console.log(this.cart);
+//   },
+// main oh guy
   addtocart() {
   const newItem = { sizes: { ...this.sizes } };
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -193,9 +205,16 @@ data(){
   localStorage.setItem('cart', JSON.stringify(cart));
 
   this.cart = cart;
+  this.cartLength = cart.length; // Update cartLength with the new length
 
   console.log(this.cart);
+
+  this.cartNotificationVisible = true;
+      setTimeout(() => {
+        this.cartNotificationVisible = false;
+      }, 2300); // Hide notification after 3 seconds
 },
+// end of main
 
 // addtocart() {
 //     const newItem = { ...this.sizes };
@@ -231,15 +250,15 @@ data(){
 //     };
 //   },
 
-    // addtocart() {
-    //   let item = this.cart.find((i) => i.nop === this.sizes.nop);
-    //   if (item) {
-    //     item.quantity++;
-    //   } else {
-    //     this.cart.push(this.sizes);
-    //     console.log(this.cart)
-    //   }
-    // },
+  // addtocart() {
+  //   let item = this.cart.find((i) => i.nop === this.sizes.nop);
+  //   if (item) {
+  //     item.quantity++;
+  //   } else {
+  //     this.cart.push(this.sizes);
+  //     console.log(this.cart)
+  //   }
+  // },
 
 // i want to click on add to cart and store all my items in an array, I think i will be using push here.
 
@@ -253,11 +272,11 @@ data(){
         console.log(this.sizes)
     },
 
-//         increaseValue() {
-//   const quantity = ++document.getElementById('vi').value;
-//   localStorage.setItem('quantity', this.sizes['quantity']);
-//   console.log(quantity);
-// },
+// //         increaseValue() {
+// //   const quantity = ++document.getElementById('vi').value;
+// //   localStorage.setItem('quantity', this.sizes['quantity']);
+// //   console.log(quantity);
+// // },
 
 
     decreasevalue(){
@@ -273,21 +292,32 @@ data(){
         // console.log(this.sizes)
     },
 
-    },
+  },
 
-    changeColor() {
-        this.currentBorderColor= this.currentBorderColor === "transparent" ? '#26A76B' : "transparent";
-        if (this.selectedItems.length === 0 ) {
-        // Add item
-        this.selectedItems.push(this.s)
-      }else
-      {
-        this.selectedItems.splice(this.s)
-      }
-      console.log(this.selectedItems)
+  changeColor() {
+      this.currentBorderColor= this.currentBorderColor === "transparent" ? '#26A76B' : "transparent";
+      if (this.selectedItems.length === 0 ) {
+      // Add item
+      this.selectedItems.push(this.s)
+    }else
+    {
+      this.selectedItems.splice(this.s)
     }
-  }
-    </script>
+    console.log(this.selectedItems)
+  },
+
+//   watch: {
+// cart: {
+//   handler() {
+//     this.cartLength = this.cart.length;
+//     localStorage.setItem('cartLength', this.cartLength);
+//   },
+//   deep: true
+// }
+
+// }
+}
+  </script>
 
       <!-- <script>
       import axios from 'axios'
@@ -321,7 +351,21 @@ data(){
 
     <style>
 
+.cartnotification{
+  top:110px;
+  /* bottom:0px; */
+  color:white;
+  z-index:200;
+  background: #81A695;
+  right:0;
+  position:fixed;
+  opacity: 1;
+  padding:0 20px 0 20px;
+}
 
+.cartnotification p{
+  font-size:14px;
+}
     /* .productflex{
         display:flex;
         justify-content:space-between;
@@ -424,6 +468,37 @@ data(){
         border: none;
     } */
 
+    /* .cartnotification-wrapper {
+  animation: slide-in 0.5s ease-out forwards;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+} */
+
+.cartnotification-wrapper {
+  animation: bounce-in 0.5s ease-out;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: translateX(100%) translateY(0%) scale(0.5);
+  }
+  60% {
+    transform: translateX(-20%) translateY(0%) scale(1.1);
+  }
+  80% {
+    transform: translateX(10%) translateY(0%) scale(0.9);
+  }
+  100% {
+    transform: translateX(0%) translateY(0%) scale(1);
+  }
+}
 
     @media (max-width: 1000px){
 

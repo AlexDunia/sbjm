@@ -25,6 +25,7 @@
     <h4 className="chose"> {{ info.s }} </h4>
     <h4 className="chose"> {{ info.m }}</h4>
     <h4 className="chose"> {{ info.l }}</h4> -->
+
      </div>
 
 
@@ -40,6 +41,8 @@
 
         <!-- When working with an array, you could either use an index and place it in as a parameter like we are used to
         or we do it the new way of picking that one directly -->
+
+
         <button v-for="(button, index) in buttons" :key="button.label"
             @click="handleClick(button, index)"
             :style="{ borderColor: currentBorderColor === index ? '#26A76B' : 'transparent' }"
@@ -71,7 +74,7 @@
         </div>
       </div>
 
-      <button class="wlbtnn" type="submit">  Add to Cart</button>
+      <!-- <button class="wlbtnn" type="submit" >  Add to Cart</button> -->
 
     </div>
 
@@ -82,6 +85,8 @@
 <script>
   import {vue} from 'vue';
 export default {
+
+
 
 data(){
     return{

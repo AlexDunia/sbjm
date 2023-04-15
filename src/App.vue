@@ -1,5 +1,9 @@
 <template>
 
+  <div>
+
+  </div>
+
 
   <div class="no" v-if="shownavmobile">
 
@@ -50,8 +54,9 @@
     </div>
 
     <i class="fa-solid fa-magnifying-glass fa-2x" id="iconcolor" @click="showmys"></i>
-     <router-link to="/cart"> <img src="./assets/images/sb.png" class="cartimg"/> </router-link>
-    <span class="dottwo"> {{ my.length }} </span>
+     <router-link to="/cart"> <img src="./assets/images/sb.png" class="cartimg" id="cimm"/> </router-link>
+    <!-- <span class="dottwo"> {{ cartnum }} </span> -->
+    <!-- {{ cartLength }} -->
     <i class="fa-solid fa-bars fa-2x" @click="navtoggle()" v-if="!shownav" id="iconcolor"> </i>
     <i class="fa-solid fa-xmark fa-2x" @click="navtoggle()" v-if="shownav" id="iconcolor"></i>
 
@@ -118,7 +123,7 @@
 </div> -->
 
 </div>
-  <router-view :atc="addtocart" :buttonz="buttons" :increasev="increasevalue" :decreasev="decreasevalue" :hdc="handleClick" :productlist="products" :selected="selectedProducts" :viewProduct="(id) => getProductDetails(id)"/>
+  <router-view :addtocart="addtocart" :buttons="buttons" :increasev="increasevalue" :decreasev="decreasevalue" :hdc="handleClick" :productlist="products" :selected="selectedProducts" :viewProduct="(id) => getProductDetails(id)"/>
 </template>
 
 <script>
@@ -130,15 +135,21 @@ export default{
   data(){
     return{
      products:[],
-     mycart:localStorage.getItem('cart'),
+    //  mycart:localStorage.getItem('cart'),
      my:[],
+    //  cartnum:0,
      shownavmobile:false,
      shownav:false,
      shows:false,
      selectedProducts:{},
-     title: localStorage.getItem('title'),
-     price: localStorage.getItem('price'),
-        buttons: [
+     cartLength: parseInt(localStorage.getItem("cartLength") || "0"),
+      cart: [],
+      product: {},
+      localStorageArray: [],
+      // title: localStorage.getItem('title'),
+      // price: localStorage.getItem('price'),
+
+      buttons: [
         { id: 1, label: "S" },
         { id: 2, label: "Medium" },
         { id: 3, label: "Large" },
@@ -146,6 +157,27 @@ export default{
         { id: 3, label: "XXL" },
         { id: 3, label: "X" },
       ],
+
+      sizes:[
+          {
+            nop: localStorage.getItem('title'),
+          },
+          {
+            price: localStorage.getItem('price'),
+          },
+          {
+            clsize:""
+          },
+          {
+            quantity: 0,
+          },
+          {
+            img: localStorage.getItem('image'),
+          },
+        ],
+
+        increaseAmount: 1,
+        selectedItems: [],
 
     }
   },
@@ -157,13 +189,29 @@ export default{
         this.products = data;
         console.log(this.products)
       });
+
+      if (!localStorage.getItem('cart')) {
+      localStorage.setItem('cart', JSON.stringify([]));
+    }
     },
+
+
 
     computed: {
     myccc() {
       return JSON.parse(localStorage.getItem('cart')) || [];
     },
+
+    cartLength() {
+      return JSON.parse(localStorage.getItem('cart')).length;
+    }
+
+  //   cartLength() {
+  //   return this.myccc.length;
+  // }
   },
+
+
   created() {
     this.my = this.myccc;
   },
@@ -224,15 +272,42 @@ stopshowmys(){
           this.shownav = !this.shownav;
         },
 
-     addtocart() {
-      const newItem = {
-        quantity: this.sizes.quantity,
-      };
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push(newItem);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      this.cart = cart;
-      console.log(this.cart);
+        addtocart() {
+  const newItem = { sizes: { ...this.sizes } };
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  cart.push(newItem);
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+   // localStorage.setItem("cartLength", cart.length);
+  // this.cartLength = cart.length;
+  // console.log(this.cartLength);
+},
+
+increasevalue(){
+        this.sizes[3].quantity = ++document.getElementById('vi').value;
+        console.log(this.sizes)
+    },
+
+//         increaseValue() {
+//   const quantity = ++document.getElementById('vi').value;
+//   localStorage.setItem('quantity', this.sizes['quantity']);
+//   console.log(quantity);
+// },
+
+
+    decreasevalue(){
+        this.sizes['quantity'] = document.getElementById('vi').value --;
+        if(document.getElementById('vi').value <= 1 ){
+            document.getElementById('vi').value  = 1
+        }
+        console.log(this.sizes)
+    },
+
+    handleClick(btnn) {
+      this.sizes[2].clsize = btnn
+        // console.log(this.sizes)
     },
 
       getProductDetails(productId) {
@@ -260,6 +335,15 @@ stopshowmys(){
 
     },
 
+    watch: {
+  cart: {
+    handler() {
+      this.cartLength = this.cart.length;
+      localStorage.setItem('cartLength', this.cartLength);
+    },
+    deep: true
+  }},
+
 }
 </script>
 
@@ -271,6 +355,22 @@ body{
   margin:0;
   padding:0;
   font-family:inter;
+}
+
+#cimm {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
 }
 
 .no{

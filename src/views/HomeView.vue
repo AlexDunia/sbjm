@@ -105,7 +105,8 @@
   <br/>
   <br/>
 
-  <Footer></Footer>
+  <!-- <Footer></Footer> -->
+  <Footer :message="message"/>
 
 </template>
 
@@ -121,7 +122,7 @@ import Pthree from '../assets/images/aritop.jpg'
 import Pfour from '../assets/images/bennybubu.jpg'
 // @ is an alias to /src
 import Counts from '@/components/Count.vue'
-import Footer from '@/components/Footer.vue'
+import Footer from '../components/Footer.vue'
 import { checkCompatEnabled } from '@vue/compiler-core'
 import { getTransitionRawChildren } from 'vue'
 import axios from 'axios'
@@ -136,6 +137,7 @@ export default {
     //   Twoimg,
     //   Threeimg
     // ],
+    message: 'Hello World!',
     oneheroflex:1,
     intervalId: null,
     intervalTime: 7000, // in milliseconds,
