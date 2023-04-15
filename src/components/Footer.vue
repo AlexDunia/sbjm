@@ -1,4 +1,8 @@
 <template>
+    <div>
+    {{ message }}
+  </div>
+
 
     <div class="ftbg">
 
@@ -49,6 +53,16 @@
     </template>
 
     <script>
+    export default{
+        props: {
+  message: String
+},
+data(){
+  return{
+    msgsee:true,
+    }
+}
+    }
 
     </script>
 

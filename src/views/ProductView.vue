@@ -68,7 +68,7 @@
 
         </div>
       </div>
-      {{ cartLength }}
+      {{ cart.length }}
       <button class="wlbtnn" type="submit" @click="addtocart"> Add to Cart</button>
 
     </div>
