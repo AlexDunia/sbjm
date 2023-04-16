@@ -70,24 +70,36 @@
       </div>
       {{ cart.length }}
       <button class="wlbtnn" type="submit" @click="addtocart"> Add to Cart</button>
-
+      <!-- <Try /> -->
     </div>
 
 
     </div>
+
+    <!-- <Try :cartitems="cart" /> -->
+
+    <!-- <Cpage/> -->
   </template>
   <script>
+  // import Cpage from ' ./CartView.vue'
     import {vue} from 'vue';
-    import Try from '@/components/cp.vue';
-export default {
+    import Try from './CartView.vue';
+    export default {
 // props: ['addtocart', 'buttons'],
-components: {
+  components: {
   Try
 },
+
+
 data(){
   return{
     cartLength: 0, // Add this property
     cart: [],
+    myItems: [
+        { name: 'Item 1', price: 10 },
+        { name: 'Item 2', price: 20 },
+        { name: 'Item 3', price: 30 },
+      ],
     product: {},
     localStorageArray: [],
     title: localStorage.getItem('title'),

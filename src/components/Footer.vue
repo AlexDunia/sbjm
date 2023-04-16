@@ -53,16 +53,17 @@
     </template>
 
     <script>
-    export default{
-        props: {
-  message: String
-},
-data(){
-  return{
-    msgsee:true,
-    }
-}
-    }
+
+//     export default{
+//         props: {
+//   message: String
+// },
+// data(){
+//   return{
+//     // msgsee:true,
+//     }
+// }
+//     }
 
     </script>
 

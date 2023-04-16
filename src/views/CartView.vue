@@ -12,6 +12,13 @@
 
 
     <!-- {{ myc }} -->
+    <div>
+
+    <!-- {{ cartitems.length }} -->
+      </div>
+
+
+      <div v-if="myc.length > 0">
         <div class="maincartflex">
 
         <!-- <div class="cartflex">
@@ -26,6 +33,7 @@
                 <p class="carttexts"> Size: <span class="qp"> XXL </span> </p>
                 <h4> Remove from cart </h4>
             </div>
+
 
         </div> -->
 
@@ -118,16 +126,25 @@
         </div>
 
     </div>
+    </div>
+
+
+
+    <div class="noitems" v-else>
+      <h1> You have not added any items in your cart </h1>
+    </div>
 
       </template>
 
     <script>
-     import Try from '@/components/cp.vue';
+    //  import Try from '@/components/cp.vue';
+    //  import Try from '../components/cp.vue';
     export default {
-      props: ['ck'],
-      components: {
-        Try
-      },
+      props: ['ck', 'cartitems'],
+
+      // components: {
+      //   Try
+      // },
       data(){
         return{
             myc: {},
@@ -171,6 +188,10 @@
       margin:0;
       padding:0;
       font-family:inter;
+    }
+
+    .noitems{
+      padding-top: 220px;
     }
 
     .maincartflex{

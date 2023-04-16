@@ -1,22 +1,18 @@
 <template>
-    <h1> Hello </h1>
-   <div v-for="(mycart, index) in items" :key="index">
+<div>
+  Hello
+  </div>
 
-<div v-for="(value, key) in mycart" :key="key">
-     {{ value.nop }}
-    </div>
+<!-- <div>
 
-</div>
+  {{ cartitems.length }}
+       </div> -->
 </template>
 <script>
-export default{
-    props: {
-    items: {
-      type: Array,
-      required: true
-    }
-  }
-}
+// export default{
+//   props: ['cartitems']
+// }
+
 </script>
 <style>
 </style>

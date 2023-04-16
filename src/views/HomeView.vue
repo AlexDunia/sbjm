@@ -106,7 +106,7 @@
   <br/>
 
   <!-- <Footer></Footer> -->
-  <Footer :message="message" v-if="msgsee"/>
+  <Footer/>
 
 </template>
 
@@ -139,7 +139,6 @@ export default {
     // ],
     message: 'Hello World!',
     oneheroflex:1,
-    msgsee:false,
     intervalId: null,
     intervalTime: 7000, // in milliseconds,
     backgroundImageUrls:[
