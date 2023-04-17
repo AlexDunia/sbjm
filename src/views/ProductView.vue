@@ -17,13 +17,32 @@
     </div>
 
     <div className="productflex">
-      <div className="productfleximg">
-      <!-- <img :src="image" alt="Image"> -->
-      <h1> Hello </h1>
+
+      <div>
+        <div class="productflexc" v-for="(image, index) in images" :key="index" @click="selectImage(index)">
+      <img :src="image" alt="Image">
     </div>
 
-    <div className="productfleximg">
+      <!-- <div className="productflexc">
+        <img :src="image" alt="Image">
+    </div>
+
+    <div className="productflexc">
+        <img :src="imagetwo" alt="Image">
+    </div>
+
+    <div className="productflexc">
+        <img :src="imagethree" alt="Image">
+    </div> -->
+
+  </div>
+
+    <!-- <div className="productfleximg">
       <img :src="image" alt="Image">
+    </div> -->
+
+    <div class="productfleximg">
+      <img :src="selectedImage" alt="Image">
     </div>
 
     <div className="productflexinfo">
@@ -99,11 +118,16 @@
     <!-- <Try :cartitems="cart" /> -->
 
     <!-- <Cpage/> -->
+
+    <div>
+      <p> {{ info }} </p>
+    </div>
   </template>
   <script>
   // import Cpage from ' ./CartView.vue'
     import {vue} from 'vue';
     import Try from './CartView.vue';
+    import pone from '../assets/images/pinkimg1.jpg'
     export default {
 // props: ['addtocart', 'buttons'],
   components: {
@@ -113,6 +137,12 @@
 
 data(){
   return{
+    images: [
+        localStorage.getItem('image'),
+        localStorage.getItem('imagetwo'),
+        localStorage.getItem('imagethree'),
+      ],
+      selectedImage: localStorage.getItem('image'),
     cartLength: 0, // Add this property
     cart: [],
     myItems: [
@@ -125,6 +155,10 @@ data(){
     title: localStorage.getItem('title'),
     price: localStorage.getItem('price'),
     image: localStorage.getItem('image'),
+    imagetwo: localStorage.getItem('imagetwo'),
+    imagethree: localStorage.getItem('imagethree'),
+    description: localStorage.getItem('description'),
+    info: localStorage.getItem('info'),
     cartNotificationVisible: false,
 
     mounted() {
@@ -227,6 +261,9 @@ methods: {
 //     this.cart = cart;
 //     console.log(this.cart);
 //   },
+selectImage(index) {
+      this.selectedImage = this.images[index];
+    },
 // main oh guy
   addtocart() {
   const newItem = { sizes: { ...this.sizes } };
@@ -455,6 +492,11 @@ methods: {
 .productfleximg img{
     width:370px;
 }
+
+.productflexc img{
+    width:70px;
+}
+
 
     /* .chose{
         width: 100px;

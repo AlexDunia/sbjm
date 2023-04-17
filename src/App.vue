@@ -319,14 +319,23 @@ increasevalue(){
         console.log(response.data); // Debugging line
         // this.$router.push(`/view/${productId}`);
         // localStorage.setItem('id', id.title);
+        // Now, we have to extract several properties from the db using array destructuring.
         const {title} = response.data;
         const {price} = response.data;
         const {image} = response.data;
+        const {imagetwo} = response.data;
+        const {imagethree} = response.data;
+        const {description} = response.data;
+        const {info} = response.data;
         this.$router.push(`/view/${productId}`);
         // Store the title value in the localStorage
         localStorage.setItem('title', title);
         localStorage.setItem('price', price);
         localStorage.setItem('image', image);
+        localStorage.setItem('imagetwo', imagetwo);
+        localStorage.setItem('imagethree', imagethree);
+        localStorage.setItem('description', description);
+        localStorage.setItem('info', info);
       })
       .catch(error => {
         console.log(error); // Debugging line
@@ -335,14 +344,14 @@ increasevalue(){
 
     },
 
-    watch: {
-  cart: {
-    handler() {
-      this.cartLength = this.cart.length;
-      localStorage.setItem('cartLength', this.cartLength);
-    },
-    deep: true
-  }},
+  //   watch: {
+  // cart: {
+  //   handler() {
+  //     this.cartLength = this.cart.length;
+  //     localStorage.setItem('cartLength', this.cartLength);
+  //   },
+  //   deep: true
+  // }},
 
 }
 </script>
