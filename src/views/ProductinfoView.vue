@@ -275,7 +275,7 @@ data(){
   margin-top:15px;
 }
 
-.productflex{
+/* .productflex{
     display:flex;
     justify-content:space-between;
     width:85%;
@@ -285,7 +285,7 @@ data(){
 
 .productfleximg img{
     width:600px;
-}
+} */
 
 /* .productflexinfo h3{
     color: #81A695;

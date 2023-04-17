@@ -17,6 +17,10 @@
     </div>
 
     <div className="productflex">
+      <div className="productfleximg">
+      <!-- <img :src="image" alt="Image"> -->
+      <h1> Hello </h1>
+    </div>
 
     <div className="productfleximg">
       <img :src="image" alt="Image">
@@ -439,6 +443,18 @@ methods: {
     border: rgb(66, 66, 66, 0.3) 0.4px solid;
     padding:7px 10px 7px 10px;
    }
+
+   .productflex{
+    display:flex;
+    justify-content:space-between;
+    width:85%;
+    padding-top:215px;
+    margin:auto;
+}
+
+.productfleximg img{
+    width:370px;
+}
 
     /* .chose{
         width: 100px;
