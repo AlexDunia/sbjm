@@ -73,7 +73,7 @@
     </div>
 
     <div class="sinput">
-      <input type="search" name="type" placeholder="Search">
+      <input type="search" name="type" placeholder="Search" v-model="query" @keyup="fetchData()" >
     </div>
 
     <div class="scancelthree" @click="stopshowmys">
@@ -95,7 +95,7 @@
 </div> -->
 
 <div class="sinput">
-  <input type="search" name="type" placeholder="Search here">
+  <input type="search" name="type" placeholder="Search here" v-model="query" @keyup="fetchData()">
 </div>
 <a> <router-link to="/cart"> <i class="fa-solid fa-cart-shopping" id="iconcolor"></i> </router-link> </a>
     <!-- <img src="./assets/images/sb.png" class="cartimg"/> -->
@@ -122,7 +122,21 @@
 
 </div> -->
 
+
 </div>
+
+<div v-for="row in allData">
+								<h1> {{ row.title }} </h1>>
+								<h1> {{ row.description }} </h1>>
+</div>
+
+<div v-if="nodata">
+
+								<h1> No Data Found </h1>
+
+
+</div>
+
   <router-view :addtocart="addtocart" :buttons="buttons" :increasev="increasevalue" :decreasev="decreasevalue" :hdc="handleClick" :productlist="products" :selected="selectedProducts" :viewProduct="(id) => getProductDetails(id)"/>
 </template>
 
@@ -134,6 +148,9 @@ export default{
 
   data(){
     return{
+    allData:'',
+		query:'',
+		nodata:false,
      products:[],
     //  mycart:localStorage.getItem('cart'),
      my:[],
@@ -178,7 +195,6 @@ export default{
 
         increaseAmount: 1,
         selectedItems: [],
-
     }
   },
 
@@ -192,6 +208,8 @@ export default{
 
       if (!localStorage.getItem('cart')) {
       localStorage.setItem('cart', JSON.stringify([]));
+
+      this.fetchData();
     }
     },
 
@@ -211,8 +229,8 @@ export default{
   // }
   },
 
-
   created() {
+    // this.fetchData();
     this.my = this.myccc;
   },
 
@@ -253,6 +271,26 @@ export default{
 //     this.cart = cart
 //     console.log(this.cart);
 // },
+
+fetchData: function() {
+  const vm = this; // Save reference to 'this' in a variable to avoid confusion with 'this' inside the axios callback function
+
+  axios.post('http://localhost/s.php', {
+    query: vm.query // Use the reference to 'this' inside the axios call to get the query property value
+  }).then(function(response){
+    if(response.data && response.data.length > 0) { // Check that response.data is not null or undefined before checking its length property
+      vm.allData = response.data;
+      console.log(response.data)
+      vm.nodata = false; // Use the reference to 'this' inside the axios callback function to set the nodata property value
+      console.log("omo");
+    } else {
+      console.log("fail")
+      vm.allData = '';
+      vm.nodata = true; // Use the reference to 'this' inside the axios callback function to set the nodata property value
+    }
+  });
+},
+
 showmys(){
   this.shows = true;
 },
