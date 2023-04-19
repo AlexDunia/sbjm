@@ -150,7 +150,8 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
   <div v-for="(row, index) in allData" :key="index">
   <p> <img :src="row.image"/> </p>
     <!-- <p className="pname"  @click="viewProduct(product.id)"> {{product.title}}  </p> -->
-    <p className="pname"  @click="viewProduct(product.id)"> {{row.title}}  </p>
+    <p className="pname"  @click="getProductDetails(row.id)"> {{row.title}}  </p>
+    <!-- getProductDetails(productId) -->
     <!-- <p className="pname"> <a> <router-link to="/product"> {{product.title}}  </router-link> </a></p> -->
     <div class="catflex">
   <p className="pprice"> {{row.price}}  </p>
@@ -402,6 +403,8 @@ increasevalue(){
         // this.$router.push(`/view/${productId}`);
         // localStorage.setItem('id', id.title);
         // Now, we have to extract several properties from the db using array destructuring.
+        this.dboverlay = false;
+        this.shows = false;
         const {title} = response.data;
         const {price} = response.data;
         const {image} = response.data;
@@ -571,12 +574,12 @@ body{
     /* background: rgba(14, 12, 12, 0.3); */
     background: white;
     position: fixed;
-    top: 270px;
+    top: 235px;
     left: 0;
     z-index: 100;
     justify-content: center;
     align-items: center;
-    z-index: 10px;
+    z-index: 1px;
 }
 
 .pgridcmargin{
@@ -599,7 +602,7 @@ body{
   }
 
   .pgridcmargin::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 .pgridcmargin::-webkit-scrollbar-track {
@@ -607,12 +610,17 @@ body{
 }
 
 .pgridcmargin::-webkit-scrollbar-thumb {
-  background-color: #ccc;
+  background: #81A695;
   border-radius: 10px;
 }
 
+/* .pgridcmargin::-webkit-scrollbar:hover {
+  width: 100px;
+} */
+
 .pgridcmargin::-webkit-scrollbar-thumb:hover {
-  background-color: #aaa;
+  background: #81A695;
+  width: 8px;
 }
 
 
@@ -703,8 +711,8 @@ body{
 .sbg{
   background: rgba(242, 255, 246, 0.7);
   width:100%;
-  padding-top:30px;
-  padding-bottom:30px;
+  padding-top:10px;
+  padding-bottom:10px;
   border-top:1px rgb(209, 208, 208) solid ;
 }
 
