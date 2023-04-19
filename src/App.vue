@@ -1,5 +1,17 @@
 <template>
 
+<!-- RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} bbtfoods\.com\.ng [NC]
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
+
   <div>
 
   </div>
@@ -77,7 +89,7 @@
     </div>
 
     <div class="scancelthree" @click="stopshowmys">
-      <i class="fa-solid fa-xmark fa-2x" id="iconcolorthree"> </i>
+      <i class="fa-solid fa-xmark fa-2x" id="iconcolorthree" @click="rs"> </i>
     </div>
 
     </div>
@@ -125,10 +137,36 @@
 
 </div>
 
-<div v-for="row in allData">
+<!-- <div v-if="dboverlay" v-for="row in allData">
 								<h1> {{ row.title }} </h1>>
 								<h1> {{ row.description }} </h1>>
+</div> -->
+
+<div class="pgridoverlay" v-if="dboverlay">
+
+<div  className="pgridcmargin">
+
+<div className="pgridc">
+  <div v-for="(row, index) in allData" :key="index">
+  <p> <img :src="row.image"/> </p>
+    <!-- <p className="pname"  @click="viewProduct(product.id)"> {{product.title}}  </p> -->
+    <p className="pname"  @click="viewProduct(product.id)"> {{row.title}}  </p>
+    <!-- <p className="pname"> <a> <router-link to="/product"> {{product.title}}  </router-link> </a></p> -->
+    <div class="catflex">
+  <p className="pprice"> {{row.price}}  </p>
+  <!-- <p className="pprice" id="cat"> {{product.category}}  </p> -->
+  <p className="pprice" id="cat"> Category  </p>
+  </div>
+  </div>
+
+  </div>
+
 </div>
+</div>
+
+
+  <br/>
+  <br/>
 
 <div v-if="nodata">
 
@@ -150,6 +188,7 @@ export default{
     return{
     allData:'',
 		query:'',
+    dboverlay:false,
 		nodata:false,
      products:[],
     //  mycart:localStorage.getItem('cart'),
@@ -281,6 +320,7 @@ fetchData: function() {
     if(response.data && response.data.length > 0) { // Check that response.data is not null or undefined before checking its length property
       vm.allData = response.data;
       console.log(response.data)
+      vm.dboverlay = true;
       vm.nodata = false; // Use the reference to 'this' inside the axios callback function to set the nodata property value
       console.log("omo");
     } else {
@@ -289,6 +329,10 @@ fetchData: function() {
       vm.nodata = true; // Use the reference to 'this' inside the axios callback function to set the nodata property value
     }
   });
+},
+
+rs(){
+  this.dboverlay = false;
 },
 
 showmys(){
@@ -520,6 +564,83 @@ body{
     text-align: center;
     margin-right:40px;
 }
+
+.pgridoverlay{
+  width: 100%;
+    height: 100vh;
+    /* background: rgba(14, 12, 12, 0.3); */
+    background: white;
+    position: fixed;
+    top: 270px;
+    left: 0;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    z-index: 10px;
+}
+
+.pgridcmargin{
+
+    /* padding-top: 300px; */
+    /* width:87%;
+    margin:auto;
+      position: fixed;
+     top: 350px;
+     left: 0;
+  height: 400px;
+  overflow-y: scroll;
+  z-index: 10; */
+  width: 87%;
+  height: 400px;
+  overflow-y: scroll;
+  overflow-x:hidden;
+  margin: 0 auto;
+  z-index: 10;
+  }
+
+  .pgridcmargin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pgridcmargin::-webkit-scrollbar-track {
+  background-color: #f2f2f2;
+}
+
+.pgridcmargin::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.pgridcmargin::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+
+  /* .pgridoverlay {
+  width: 100%;
+  height: 100vh;
+  background: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pgridcmargin {
+  width: 80%;
+  height: 400px;
+  overflow-y: scroll;
+  margin: 0 auto;
+  z-index: 10;
+} */
+  .sinput input{
+    -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  }
 
 /* #iconcolor #s{
   margin-left:30px;
