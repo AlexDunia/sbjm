@@ -644,11 +644,18 @@ body{
   margin: 0 auto;
   z-index: 10;
 } */
-  .sinput input{
+
+  /* .sinput input{
     -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  }
+  } */
+
+  input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 
 /* #iconcolor #s{
   margin-left:30px;
