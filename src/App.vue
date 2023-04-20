@@ -142,6 +142,20 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
 								<h1> {{ row.description }} </h1>>
 </div> -->
 
+<!-- Change Currency -->
+<div class="buttondiv">
+<br/>
+<div class="cbtn">
+<button> NGN </button>
+</div>
+
+<div class="cbtn">
+<button> USD </button>
+</div>
+
+</div>
+<!-- End change currency  -->
+
 <div class="pgridoverlay" v-if="dboverlay">
 
 <div  className="pgridcmargin">
@@ -238,24 +252,48 @@ export default{
     }
   },
 
-  mounted() {
-    fetch("http://localhost/index.php")
-      .then((response) => response.json())
-      .then((data) => {
-        this.products = data;
-        console.log(this.products)
-      });
+  // mounted() {
+  //   https://styledbyjm.com.ng/index.php
+  //   // fetch("http://localhost/index.php")
+  //   fetch("https://styledbyjm.com.ng/myproducts.php")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       this.products = data;
+  //       console.log(this.products)
+  //     });
 
-      if (!localStorage.getItem('cart')) {
-      localStorage.setItem('cart', JSON.stringify([]));
+  //     if (!localStorage.getItem('cart')) {
+  //     localStorage.setItem('cart', JSON.stringify([]));
 
-      this.fetchData();
-    }
-    },
+  //     this.fetchData();
+  //   }
+  //   },
+
+    // mounted() {
+    // // fetch("https://henrochie.com/prod.php")
+    // fetch("http://styledbyjm.com.ng/myproducts.php")
+    // //  Lets try this ourselve to test our intellectual abilities.
+    // .then((response)=> response.json()).then((Data)=> {
+    //   this.products = Data;
+    //   console.log("works")
+    // })
+    // },
+
+    mounted() {
+      axios
+      .get(`myproducts.php`)
+      .then((response) => {
+      // JSON responses are automatically parsed.
+        this.products = response.data
+        console.log(response.data)
+   })
+      .catch((e) => {
+        this.errors.push(e)
+   })
+},
 
 
-
-    computed: {
+  computed: {
     myccc() {
       return JSON.parse(localStorage.getItem('cart')) || [];
     },
@@ -315,7 +353,9 @@ export default{
 fetchData: function() {
   const vm = this; // Save reference to 'this' in a variable to avoid confusion with 'this' inside the axios callback function
 
-  axios.post('http://localhost/s.php', {
+  // axios.post('http://localhost/s.php', {
+    https://styledbyjm.com.ng/index.php
+    axios.post('s.php', {
     query: vm.query // Use the reference to 'this' inside the axios call to get the query property value
   }).then(function(response){
     if(response.data && response.data.length > 0) { // Check that response.data is not null or undefined before checking its length property
@@ -395,7 +435,8 @@ increasevalue(){
 
       getProductDetails(productId) {
     console.log(productId);
-    axios.post('http://localhost/gpd.php', { id: productId })
+    // axios.post('http://localhost/gpd.php', { id: productId })
+    axios.post('gpd.php', { id: productId })
       .then(response => {
         this.selectedProducts = response.data
         console.log(this.selectedProducts);
@@ -450,6 +491,73 @@ body{
   padding:0;
   font-family:inter;
 }
+
+.cbtn{
+  margin-bottom:-7px;
+}
+
+.buttondiv {
+    /* background: white; */
+    border-radius: 8px;
+    /* flex-basis: 29%; */
+    /* width: 40%; */
+    /* left: 350px; */
+    /* top: 100px; */
+    /* padding-bottom: 5px; */
+    padding-left: 50px;
+    padding-right: 50px;
+    /* height: 200%; */
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    /* margin: auto; */
+    position:fixed;
+    /* left: 0; */
+    /* left:0px; */
+    right:-50px;
+    top: 320px;
+    z-index:200;
+}
+
+.buttondiv button{
+  /* background: #000; */
+  transform: scale(0.8);
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 120px;
+    /* z-index: 1000; */
+    font: 16px Arial;
+    /* margin: 2px 0 0; */
+    /* transition: all .25s ease;
+    position: relative; */
+    cursor: pointer;
+    /* clear: both; */
+    display: inline-block;
+    height: 40px;
+}
+
+.buttondiv button {
+  /* Your existing button styles... */
+  transition: all 0.25s ease;
+}
+
+.buttondiv button:hover {
+   transform: scale(1);
+}
+
+/* .popupwrapperwithdraw {
+    width: 100%;
+    height: 100vh;
+    background: rgba(14, 12, 12, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index:100;
+    justify-content: center;
+    align-items: center;
+    z-index: 10px;
+} */
+
 
 #cimm {
   animation: pulse 1s infinite;

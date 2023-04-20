@@ -79,6 +79,7 @@
 
     <h1> Latest Arrivals </h1>
       </div>
+      <!-- <button @click="convertAllToUSD">Convert all prices to USD</button> -->
 
       <!-- <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M6.00834 13.1834L18.7333 10.8V3.63336H3.45834" stroke="#191919" stroke-width="1.5" stroke-miterlimit="10"></path>
@@ -91,9 +92,10 @@
   <div v-for="(product, i) in productlist" :key="i">
   <p> <img :src="product.image"/> </p>
     <p className="pname"  @click="viewProduct(product.id)"> {{product.title}}  </p>
+    <!-- <p className="pname"> {{product.title}}  </p> -->
     <!-- <p className="pname"> <a> <router-link to="/product"> {{product.title}}  </router-link> </a></p> -->
     <div class="catflex">
-  <p className="pprice"> {{product.price}}  </p>
+  <p className="pprice" @click="changePrice(product)"> {{product.price}}  </p>
   <!-- <p className="pprice" id="cat"> {{product.category}}  </p> -->
   <p className="pprice" id="cat"> Category  </p>
   </div>
@@ -140,6 +142,7 @@ export default {
     message: 'Hello World!',
     oneheroflex:1,
     intervalId: null,
+  AUD:null,
     intervalTime: 7000, // in milliseconds,
     backgroundImageUrls:[
       {
@@ -163,6 +166,10 @@ export default {
     ],
 
     currentImageIndex: 0,
+    EXCHANGE_RATE: null,
+    API_ACCESS_KEY: 'WIrzBmrPytwXs6pRLh4FNswWIvK0RZH4',
+    // EXCHANGE_RATE: 0.0026,
+
     // products:[],
     // selectedProducts:{},
 
@@ -237,6 +244,59 @@ export default {
 
   methods: {
 
+  //   convertToUSD(ptc) {
+  //   return ptc * this.er;
+  // },
+
+  // changePrice(product) {
+  //   // Assuming you want to double the price
+  //   product.price = product.price * 2;
+  // },
+
+  // convertAllToUSD() {
+  //     for (let i = 0; i < this.productlist.length; i++) {
+  //       this.productlist[i].price = this.productlist[i].price * this.EXCHANGE_RATE;
+  //     }
+  //   },
+
+  // convertAllToUSD() {
+  //     axios.get('https://api.exchangeratesapi.io/latest?base=NGN&symbols=USD')
+  //       .then(response => {
+  //         this.EXCHANGE_RATE = response.data.rates.USD;
+  //         for (let i = 0; i < this.products.length; i++) {
+  //           this.products[i].price = this.products[i].price * this.EXCHANGE_RATE;
+  //         }
+  //       })
+  //       .catch(error => {
+  //         console.error(error);
+  //       });
+  //   },
+
+
+
+
+  // convertAllToUSD() {
+  //   axios.get(`https://api.freecurrencyapi.com/v1/latest?apikey=iBkgAJGMkuQixPWCapMPn5dbXjxdYYpHhufhilmf`)
+  //     // axios.get(`http://apilayer.net/api/live?access_key=${this.API_ACCESS_KEY}&currencies=USD&source=NGN&format=1`)
+  //       .then(response => {
+  //         // console.log(response.data.data.anne);
+  //         // this.AUD = response.data.AUD;
+  //         // console.log(this.AUD)
+  //          console.log(response.data);
+  //         // if (response.data && response.data.quotes && response.data.quotes.USDNGN) {
+  //         //   this.EXCHANGE_RATE = 1 / response.data.quotes.USDNGN;
+  //         //   for (let i = 0; i < this.products.length; i++) {
+  //         //     this.products[i].price = this.products[i].price * this.EXCHANGE_RATE;
+  //         //   }
+  //         // } else {
+  //         //   console.error('Error: Invalid API response');
+  //         // }
+  //       })
+  //       .catch(error => {
+  //         console.error(error);
+  //       });
+  //   },
+
     // getProductDetails(info){
     //  console.log(info.title)
     // },
@@ -268,7 +328,8 @@ export default {
 
 getProductDetails(productId) {
   console.log(productId);
-  axios.post('http://localhost/gpd.php', { id: productId })
+  // axios.post('http://localhost/gpd.php', { id: productId })
+  axios.post('gpd.php', { id: productId })
     .then(response => {
       this.selectedProducts = response.data
       console.log(this.selectedProducts);
