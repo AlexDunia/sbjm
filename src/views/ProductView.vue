@@ -31,9 +31,25 @@
          <h4 className="chose"> {{ info.price }} </h4>
         </div> -->
     <div>
+
+      <div class="pinfosizeflex">
+
+     <div>
      <h3 className="nop"> {{ title }} </h3>
+     </div>
+
+     <div class="schart">
+        <button> <i class="fa-solid fa-chart-simple"></i> Size Chart </button>
+      </div>
+
+      </div>
+
+     <div>
          <h4 className="chose"> {{ price }} </h4>
          <!-- <img src="{{ image }}"/> -->
+    </div>
+
+
 
     </div>
 
@@ -47,7 +63,7 @@
         </button>
 
 
-    <div class="ProductForm__QuantitySelector">
+     <div class="ProductForm__QuantitySelector">
 
         <div class="QuantitySelector QuantitySelector--large"><span class="QuantitySelector__Button Link Link--secondary" data-action="decrease-quantity">
             <svg class="Icon Icon--minus" role="presentation" viewBox="0 0 16 2" @click="decreasevalue">
@@ -68,7 +84,7 @@
 
         </div>
       </div>
-      {{ cart.length }}
+      <!-- {{ cart.length }} -->
       <button class="wlbtnn" type="submit" @click="addtocart"> Add to Cart</button>
       <!-- <Try /> -->
     </div>
@@ -363,21 +379,6 @@ methods: {
 
     <style>
 
-.cartnotification{
-  top:110px;
-  /* bottom:0px; */
-  color:white;
-  z-index:200;
-  background: #81A695;
-  right:0;
-  position:fixed;
-  opacity: 1;
-  padding:0 20px 0 20px;
-}
-
-.cartnotification p{
-  font-size:14px;
-}
     /* .productflex{
         display:flex;
         justify-content:space-between;
@@ -410,6 +411,34 @@ methods: {
         color: #81A695;
         font-weight: 800;
     }
+
+    .cartnotification{
+  top:110px;
+  /* bottom:0px; */
+  color:white;
+  z-index:200;
+  background: #81A695;
+  right:0;
+  position:fixed;
+  opacity: 1;
+  padding:0 20px 0 20px;
+  }
+
+  .pinfosizeflex{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+   .cartnotification p{
+   font-size:14px;
+   }
+
+   .schart button{
+    background:#f0f0f0;
+    border: rgb(66, 66, 66, 0.3) 0.4px solid;
+    padding:7px 10px 7px 10px;
+   }
 
     /* .chose{
         width: 100px;
