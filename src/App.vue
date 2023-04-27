@@ -102,8 +102,8 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
 
 <div class="sflex">
 
-  <!-- <div class="smain">
-  <i class="fa-solid fa-magnifying-glass fa-2x" id="iconcolortwo"> </i>
+<!-- <div class="smain">
+<i class="fa-solid fa-magnifying-glass fa-2x" id="iconcolortwo"> </i>
 </div> -->
 
 <div class="sinput">
@@ -190,7 +190,7 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
 
 </div>
 
-  <router-view :addtocart="addtocart" :buttons="buttons" :increasev="increasevalue" :decreasev="decreasevalue" :hdc="handleClick" :productlist="products" :selected="selectedProducts" :viewProduct="(id) => getProductDetails(id)"/>
+  <router-view :addtocart="addtocart" :buttons="buttons" :increasev="increasevalue" :decreasev="decreasevalue" :hdc="handleClick" :productlist="products" :selected="selectedProducts" :viewProduct="(id) => getP(id)"/>
 </template>
 
 <script>
@@ -355,10 +355,12 @@ fetchData: function() {
 
   // axios.post('http://localhost/s.php', {
     https://styledbyjm.com.ng/index.php
+
     axios.post('s.php', {
     query: vm.query // Use the reference to 'this' inside the axios call to get the query property value
   }).then(function(response){
-    if(response.data && response.data.length > 0) { // Check that response.data is not null or undefined before checking its length property
+    if(response.data && response.data.length > 0) {
+      // Check that response.data is not null or undefined before checking its length property
       vm.allData = response.data;
       console.log(response.data)
       vm.dboverlay = true;
@@ -433,14 +435,56 @@ increasevalue(){
         // console.log(this.sizes)
     },
 
+//     getProductDetails(productId) {
+//     console.log("I am going through a lot")
+// }
+
+
       getProductDetails(productId) {
     console.log(productId);
     // axios.post('http://localhost/gpd.php', { id: productId })
-    axios.post('gpd.php', { id: productId })
+    axios.post('https://styledbyjm.com.ng/gpd.php', { id: productId })
       .then(response => {
         this.selectedProducts = response.data
         console.log(this.selectedProducts);
-        console.log(response.data); // Debugging line
+        console.log(response.data);
+        // Debugging line
+        // this.$router.push(`/view/${productId}`);
+        // localStorage.setItem('id', id.title);
+        // Now, we have to extract several properties from the db using array destructuring.
+        this.dboverlay = false;
+        this.shows = false;
+        const {title} = response.data;
+        const {price} = response.data;
+        const {image} = response.data;
+        const {imagetwo} = response.data;
+        const {imagethree} = response.data;
+        const {description} = response.data;
+        const {info} = response.data;
+        this.$router.push(`/view/${productId}`);
+        // Store the title value in the localStorage
+        localStorage.setItem('title', title);
+        localStorage.setItem('price', price);
+        localStorage.setItem('image', image);
+        localStorage.setItem('imagetwo', imagetwo);
+        localStorage.setItem('imagethree', imagethree);
+        localStorage.setItem('description', description);
+        localStorage.setItem('info', info);
+      })
+      .catch(error => {
+        console.log(error); // Debugging line
+    })
+},
+
+getP(productId) {
+    console.log(productId);
+    // axios.post('http://localhost/gpd.php', { id: productId })
+    axios.post('https://styledbyjm.com.ng/gpd.php', { id: productId })
+      .then(response => {
+        this.selectedProducts = response.data
+        console.log(this.selectedProducts);
+        console.log(response.data);
+        // Debugging line
         // this.$router.push(`/view/${productId}`);
         // localStorage.setItem('id', id.title);
         // Now, we have to extract several properties from the db using array destructuring.
@@ -471,7 +515,7 @@ increasevalue(){
     },
 
   //   watch: {
-  // cart: {
+  //   cart: {
   //   handler() {
   //     this.cartLength = this.cart.length;
   //     localStorage.setItem('cartLength', this.cartLength);
@@ -479,7 +523,7 @@ increasevalue(){
   //   deep: true
   // }},
 
-}
+  }
 </script>
 
 <style>

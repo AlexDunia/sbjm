@@ -1,4 +1,5 @@
 <template>
+  <h1> Updated </h1>
   <div class="hbg">
     <transition name="hero-fade" mode="out-in">
       <div class="hshow" :key="oneheroflex">
@@ -77,27 +78,36 @@
     <div className="pw">
       <div class="cil">
 
-    <h1> Latest Arrivals </h1>
+    <h1> Latest Arrivalszz </h1>
       </div>
-      <!-- <button @click="convertAllToUSD">Convert all prices to USD</button> -->
+
+      <!-- <button @click="convertAllToUSD"> Convert all prices to USD </button> -->
 
       <!-- <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M6.00834 13.1834L18.7333 10.8V3.63336H3.45834" stroke="#191919" stroke-width="1.5" stroke-miterlimit="10"></path>
 							<path d="M0.43335 1.25H2.82502L6.00002 13.1833L4.61668 15.2583C4.48429 15.4615 4.41472 15.6992 4.41668 15.9417V15.9417C4.41668 16.2643 4.54487 16.5738 4.77304 16.802C5.00121 17.0302 5.31067 17.1583 5.63335 17.1583H15.55" stroke="#191919" stroke-width="1.5" stroke-miterlimit="10"></path>
 							<path d="M15.55 18.75C15.9872 18.75 16.3417 18.3956 16.3417 17.9584C16.3417 17.5211 15.9872 17.1667 15.55 17.1667C15.1128 17.1667 14.7583 17.5211 14.7583 17.9584C14.7583 18.3956 15.1128 18.75 15.55 18.75Z" stroke="#191919" stroke-width="1.5" stroke-miterlimit="10"></path>
 							<path d="M7.59165 18.75C8.02888 18.75 8.38332 18.3956 8.38332 17.9584C8.38332 17.5211 8.02888 17.1667 7.59165 17.1667C7.15443 17.1667 6.79999 17.5211 6.79999 17.9584C6.79999 18.3956 7.15443 18.75 7.59165 18.75Z" stroke="#191919" stroke-width="1.5" stroke-miterlimit="10"></path>
-							</svg> -->
+			</svg> -->
 
     <div className="pgridc">
   <div v-for="(product, i) in productlist" :key="i">
   <p> <img :src="product.image"/> </p>
+
     <p className="pname"  @click="viewProduct(product.id)"> {{product.title}}  </p>
+
     <!-- <p className="pname"> {{product.title}}  </p> -->
-    <!-- <p className="pname"> <a> <router-link to="/product"> {{product.title}}  </router-link> </a></p> -->
-    <div class="catflex">
-  <p className="pprice" @click="changePrice(product)"> {{product.price}}  </p>
-  <!-- <p className="pprice" id="cat"> {{product.category}}  </p> -->
-  <p className="pprice" id="cat"> Category  </p>
+    <!-- <p className="pname"> <a> <router-link to="/product"> {{product.title}}  </router-link> </a> </p> -->
+
+  <div class="catflex">
+    <p class="pprice"> {{product.price}}  </p>
+
+
+   <!-- <p className="pprice" @click="changePrice(product)"> {{product.price}}  </p> -->
+   <!-- <p className="pprice" id="cat"> {{product.category}}  </p> -->
+
+   <p className="pprice" id="cat"> Category  </p>
+
   </div>
   </div>
 
@@ -108,6 +118,7 @@
   <br/>
 
   <!-- <Footer></Footer> -->
+
   <Footer/>
 
 </template>
@@ -325,24 +336,22 @@ export default {
 //     });
 // },
 
+// getProductDetails(productId) {
+//   console.log(productId);
+//   // axios.post('http://localhost/gpd.php', { id: productId })
+//   axios.post('gpd.php', { id: productId })
+//     .then(response => {
+//       this.selectedProducts = response.data
+//       console.log(this.selectedProducts);
+//     })
+//     .catch(error => {
+//       console.error(error);
+//       console.log(error.response.data);
+//     });
+// },
 
-getProductDetails(productId) {
-  console.log(productId);
-  // axios.post('http://localhost/gpd.php', { id: productId })
-  axios.post('gpd.php', { id: productId })
-    .then(response => {
-      this.selectedProducts = response.data
-      console.log(this.selectedProducts);
-    })
-    .catch(error => {
-      console.error(error);
-      console.log(error.response.data);
-    });
-},
-
-
-      showNextImage() {
-      this.currentImageIndex = (this.currentImageIndex + 1) % this.backgroundImageUrls.length;
+    showNextImage() {
+    this.currentImageIndex = (this.currentImageIndex + 1) % this.backgroundImageUrls.length;
     },
 
 
@@ -404,7 +413,6 @@ getProductDetails(productId) {
 }
 
 
-
 </script>
 <style>
 
@@ -412,6 +420,10 @@ getProductDetails(productId) {
   text-decoration: none;
     color: #81A695;
     font-weight: 500;
+}
+
+.pnamer:hover {
+  cursor: pointer;
 }
 
 .catflex{

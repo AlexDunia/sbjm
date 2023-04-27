@@ -268,7 +268,7 @@ data(){
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       this.cart = cart;
 
-    axios.get('http://localhost/gpd.php?id=' + this.$route.params.id)
+    axios.get('gpd.php?id=' + this.$route.params.id)
     .then(response => {
      // this.product = this.selected,
      this.product = response.data
@@ -813,7 +813,7 @@ selectImage(index) {
 
 .smallimg{
   display:flex;
-  justify-content:space-between;
+  justify-content:space-around;
 }
 
 }
