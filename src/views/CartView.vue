@@ -191,7 +191,13 @@
     }
 
     .noitems{
-      padding-top: 220px;
+      padding-top: 160px;
+      width:85%;
+      margin:auto;
+    }
+
+    .noitems h1{
+     color:#81A695;
     }
 
     .maincartflex{
@@ -328,5 +334,13 @@
     }
 
     }
+
+    @media (max-width: 700px){
+      .noitems h1{
+     color:#81A695;
+     font-size:22px;
+    }
+
+}
 
     </style>

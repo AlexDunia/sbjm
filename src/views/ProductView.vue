@@ -816,6 +816,102 @@ selectImage(index) {
   justify-content:space-around;
 }
 
+/* more */
+
+.xmark{
+     text-align:right;
+     margin-right:20px;
+     padding-top:30px;
+    }
+
+    .popupwithdraw {
+    background: white;
+    border-radius: 8px;
+    /* flex-basis: 29%; */
+    width: 85%;
+    /* left: 350px; */
+    /* top: 100px; */
+    /* padding-bottom: 5px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    position: absolute;
+    /* height: 200%; */
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 160px;
+    z-index:200;
 }
+
+/* You should probably use this styling for the background of serach results. */
+
+.popupwrapperwithdraw {
+    width: 100%;
+    height: 100vh;
+    background: rgba(14, 12, 12, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index:100;
+    justify-content: center;
+    align-items: center;
+    z-index: 10px;
+}
+
+
+.sizeflex{
+  display:flex;
+  justify-content:space-around;
+  padding-top:5px;
+}
+
+.sizeflex h4{
+  font-weight:400;
+  font-size:6px;
+  padding-bottom:10px;
+  /* padding-left:20px; */
+}
+
+}
+
+@media (max-width: 700px){
+
+.popupwithdraw {
+  background: white;
+  border-radius: 8px;
+  /* flex-basis: 29%; */
+  width: 75%;
+  /* left: 350px; */
+  /* top: 100px; */
+  /* padding-bottom: 5px; */
+  padding-left: 5px;
+  padding-right: 5px;
+  position: absolute;
+  /* height: 200%; */
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 160px;
+  z-index:200;
+}
+
+.btnsize {
+  margin-right: 9px;
+  margin-top: 9px;
+  font-size: 10px;
+  /* line-height:5em; */
+  color:black;
+  padding: 5px 10px 5px 10px;
+  border: 2px solid transparent;
+  margin-top: -10px;
+}
+
+
+}
+
 
     </style>

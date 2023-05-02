@@ -109,9 +109,13 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
 <div class="sinput">
   <input type="search" name="type" placeholder="Search here" v-model="query" @keyup="fetchData()">
 </div>
-<a> <router-link to="/cart"> <i class="fa-solid fa-cart-shopping" id="iconcolor"></i> </router-link> </a>
+  <a> <router-link to="/cart">
+    <img src="./assets/images/sb.png" class="cartimg" id="cimm"/>
+  </router-link>
+ </a>
+ <!-- <a> <router-link to="/cart"> <i class="fa-solid fa-cart-shopping" id="iconcolor"></i> </router-link> </a> -->
     <!-- <img src="./assets/images/sb.png" class="cartimg"/> -->
-    <span class="dottwo">6</span>
+    <!-- <span class="dottwo">6</span> -->
     <i class="fa-solid fa-bars fa-2x" @click="navmobiletoggle()" id="iconcolor"> </i>
 
 </div>
@@ -281,7 +285,8 @@ export default{
 
     mounted() {
       axios
-      .get(`myproducts.php`)
+      // .get(`myproducts.php`)
+      .get(`http://localhost/index.php`)
       .then((response) => {
       // JSON responses are automatically parsed.
         this.products = response.data
@@ -356,7 +361,7 @@ fetchData: function() {
   // axios.post('http://localhost/s.php', {
     https://styledbyjm.com.ng/index.php
 
-    axios.post('s.php', {
+    axios.post('http://localhost/s.php', {
     query: vm.query // Use the reference to 'this' inside the axios call to get the query property value
   }).then(function(response){
     if(response.data && response.data.length > 0) {
@@ -443,7 +448,8 @@ increasevalue(){
       getProductDetails(productId) {
     console.log(productId);
     // axios.post('http://localhost/gpd.php', { id: productId })
-    axios.post('https://styledbyjm.com.ng/gpd.php', { id: productId })
+    // axios.post('https://styledbyjm.com.ng/gpd.php', { id: productId })
+    axios.post('https://localhost/gpd.php', { id: productId })
       .then(response => {
         this.selectedProducts = response.data
         console.log(this.selectedProducts);
@@ -479,7 +485,8 @@ increasevalue(){
 getP(productId) {
     console.log(productId);
     // axios.post('http://localhost/gpd.php', { id: productId })
-    axios.post('https://styledbyjm.com.ng/gpd.php', { id: productId })
+    // axios.post('https://styledbyjm.com.ng/gpd.php', { id: productId })
+    axios.post('http://localhost/gpd.php', { id: productId })
       .then(response => {
         this.selectedProducts = response.data
         console.log(this.selectedProducts);
@@ -950,6 +957,7 @@ input:focus {
 .cartimg{
   width: 23px;
   margin-left:20px;
+  margin-right:20px;
 }
 
 .dottwo {
@@ -1051,7 +1059,9 @@ input:focus {
 
 .cartimg{
   width: 23px;
-  margin-left:0;
+  margin-left:23px;
+  margin-right:20px;
+  /* margin-left:0; */
 }
 
 .dottwo {
@@ -1078,11 +1088,52 @@ input:focus {
 
   }
 
-  @media (max-width: 750px){
+  @media (max-width: 600px){
+
  .scancel{
   flex-basis:40%;
   width:100%;
   justify-content: end;
+}
+
+.buttondiv {
+    /* background: white; */
+    border-radius: 8px;
+    /* flex-basis: 29%; */
+    /* width: 40%; */
+    /* left: 350px; */
+    /* top: 100px; */
+    /* padding-bottom: 5px; */
+    padding-left: 50px;
+    padding-right: 50px;
+    /* height: 200%; */
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    /* margin: auto; */
+    position:fixed;
+    /* left: 0; */
+    /* left:0px; */
+    right:-65px;
+    top: 330px;
+    z-index:200;
+}
+
+.buttondiv button{
+  /* background: #000; */
+  transform: scale(0.8);
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 120px;
+    /* z-index: 1000; */
+    font: 16px Arial;
+    /* margin: 2px 0 0; */
+    /* transition: all .25s ease;
+    position: relative; */
+    cursor: pointer;
+    /* clear: both; */
+    display: inline-block;
+    height: 40px;
 }
 
   }
