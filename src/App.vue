@@ -281,7 +281,8 @@ export default{
 
     mounted() {
       axios
-      .get(`myproducts.php`)
+      // .get(`myproducts.php`)
+      .get(`http://localhost/index.php`)
       .then((response) => {
       // JSON responses are automatically parsed.
         this.products = response.data
@@ -356,7 +357,7 @@ fetchData: function() {
   // axios.post('http://localhost/s.php', {
     https://styledbyjm.com.ng/index.php
 
-    axios.post('s.php', {
+    axios.post('http://localhost/s.php', {
     query: vm.query // Use the reference to 'this' inside the axios call to get the query property value
   }).then(function(response){
     if(response.data && response.data.length > 0) {
@@ -478,8 +479,8 @@ increasevalue(){
 
 getP(productId) {
     console.log(productId);
-    // axios.post('http://localhost/gpd.php', { id: productId })
-    axios.post('https://styledbyjm.com.ng/gpd.php', { id: productId })
+    axios.post('http://localhost/gpd.php', { id: productId })
+    // axios.post('https://styledbyjm.com.ng/gpd.php', { id: productId })
       .then(response => {
         this.selectedProducts = response.data
         console.log(this.selectedProducts);

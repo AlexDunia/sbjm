@@ -100,7 +100,7 @@
     <!-- <p className="pname"> <a> <router-link to="/product"> {{product.title}}  </router-link> </a> </p> -->
 
   <div class="catflex">
-    <p class="pprice"> {{product.price}}  </p>
+    <!-- <p class="pprice"> {{product.price}}  </p> -->
 
 
    <!-- <p className="pprice" @click="changePrice(product)"> {{product.price}}  </p> -->
