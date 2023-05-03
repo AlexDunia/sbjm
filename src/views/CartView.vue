@@ -49,7 +49,7 @@
           <p class="carttextp">Quantity: <span class="qp">{{ item.sizes['3'].quantity }}</span></p>
           <p class="carttexts">Size: <span class="qp">{{ item.sizes['2'].clsize }}</span></p>
           <p class="carttexts">Price: <span class="qp">{{ item.sizes['1'].price * item.sizes['3'].quantity }}</span></p>
-          <h4 @click="removeFromCart(index)">Remove from cart</h4>
+          <h4 @click="removeFromCart(index)"> Remove from cart </h4>
         </div>
       </div>
        </div>

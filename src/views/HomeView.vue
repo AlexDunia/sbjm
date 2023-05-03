@@ -1,5 +1,4 @@
 <template>
-  <h1> Updated </h1>
   <div class="hbg">
     <transition name="hero-fade" mode="out-in">
       <div class="hshow" :key="oneheroflex">
@@ -78,7 +77,7 @@
     <div className="pw">
       <div class="cil">
 
-    <h1> Latest Arrivalszz </h1>
+    <h1> Latest Arrivals </h1>
       </div>
 
       <!-- <button @click="convertAllToUSD"> Convert all prices to USD </button> -->
@@ -100,7 +99,8 @@
     <!-- <p className="pname"> <a> <router-link to="/product"> {{product.title}}  </router-link> </a> </p> -->
 
   <div class="catflex">
-    <!-- <p class="pprice"> {{product.price}}  </p> -->
+
+    <p class="pprice"> {{product.price}}  </p>
 
 
    <!-- <p className="pprice" @click="changePrice(product)"> {{product.price}}  </p> -->

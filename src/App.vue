@@ -194,7 +194,7 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
 
 </div>
 
-  <router-view :addtocart="addtocart" :buttons="buttons" :increasev="increasevalue" :decreasev="decreasevalue" :hdc="handleClick" :productlist="products" :selected="selectedProducts" :viewProduct="(id) => getP(id)"/>
+  <router-view :addtocart="addtocart" :ck="checkout" :buttons="buttons" :increasev="increasevalue" :decreasev="decreasevalue" :hdc="handleClick" :productlist="products" :selected="selectedProducts" :viewProduct="(id) => getP(id)"/>
 </template>
 
 <script>
@@ -286,7 +286,7 @@ export default{
     mounted() {
       axios
       // .get(`myproducts.php`)
-      .get(`http://localhost/index.php`)
+      .get(`index.php`)
       .then((response) => {
       // JSON responses are automatically parsed.
         this.products = response.data
@@ -355,13 +355,18 @@ export default{
 //     console.log(this.cart);
 // },
 
+checkout() {
+      // Redirect the user to the new PHP page
+    window.location.href = 'newp.php';
+},
+
 fetchData: function() {
   const vm = this; // Save reference to 'this' in a variable to avoid confusion with 'this' inside the axios callback function
 
   // axios.post('http://localhost/s.php', {
     https://styledbyjm.com.ng/index.php
 
-    axios.post('http://localhost/s.php', {
+    axios.post('s.php', {
     query: vm.query // Use the reference to 'this' inside the axios call to get the query property value
   }).then(function(response){
     if(response.data && response.data.length > 0) {
@@ -449,7 +454,7 @@ increasevalue(){
     console.log(productId);
     // axios.post('http://localhost/gpd.php', { id: productId })
     // axios.post('https://styledbyjm.com.ng/gpd.php', { id: productId })
-    axios.post('https://localhost/gpd.php', { id: productId })
+    axios.post('gpd.php', { id: productId })
       .then(response => {
         this.selectedProducts = response.data
         console.log(this.selectedProducts);
@@ -486,7 +491,7 @@ getP(productId) {
     console.log(productId);
     // axios.post('http://localhost/gpd.php', { id: productId })
     // axios.post('https://styledbyjm.com.ng/gpd.php', { id: productId })
-    axios.post('http://localhost/gpd.php', { id: productId })
+    axios.post('gpd.php', { id: productId })
       .then(response => {
         this.selectedProducts = response.data
         console.log(this.selectedProducts);
