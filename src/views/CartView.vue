@@ -305,6 +305,7 @@
         font-size: 15px;
         color: white;
         border: none;
+        cursor:pointer;
     }
 
 

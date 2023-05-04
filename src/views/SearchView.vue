@@ -30,13 +30,19 @@
 
       <h1>Search Results for "{{ query }}"</h1>
       <div v-for="result in results" :key="result.id">
-  <p class="pname">{{ result.title }}</p>
+  <p class="pname" @click="viewProduct(result.id)"> {{ result.title }} </p>
   <div class="catflex">
     <p class="pprice">{{ result.price }}</p>
     <p class="pprice" id="cat">Category</p>
   </div>
   <ul>
+    <!-- The list of text lines comes from the result.description property,
+        which is a string value that we want to split into multiple lines based
+        on the "." character. We're using the split() function to split the
+        result.description string into an array of text lines, where each line ends with a "."
+        character. -->
     <li v-for="line in result.description.split('.')" :key="line">{{ line.trim() }}</li>
+    <!-- Using line.trim() on each element of the array removes any extra whitespace characters, -->
   </ul>
 </div>
 
@@ -62,6 +68,7 @@
 <script>
   import axios from 'axios'
   export default {
+    props: ['viewProduct'],
     data() {
       return {
         query: this.$route.query.q,

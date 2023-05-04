@@ -174,10 +174,8 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
 </div>
 
 </div>
+
 <!-- End change currency  -->
-
-
-
 
   <br/>
   <br/>
@@ -198,7 +196,9 @@ import router from './router'
 export default{
 
   data(){
+    const defaultCurrency = localStorage.getItem('currency') || 'naira'
     return{
+    currency: defaultCurrency,
     allData:'',
 		query:'',
     cno:false,
@@ -352,34 +352,71 @@ export default{
 //     console.log(this.cart);
 // },
 
-naira(){
-    // this.products.forEach(product => {
-    //   product.showDesc = !product.showDesc;
-    // });
-    this.products.forEach(product => {
-      product.showDesc = false
-    });
-    this.cno = true;
-    setTimeout(() => {
-      this.cno = false;
-    }, 2000);
-    },
+// naira(){
+//     this.products.forEach(product => {
+//       product.showDesc = false
+//     });
+//     this.cno = true;
+//     setTimeout(() => {
+//       this.cno = false;
+//     }, 2000);
+//     },
 
-  dollar() {
-    this.products.forEach(product => {
-      product.showDesc = true
-    });
-    this.cdol = true;
-    setTimeout(() => {
-      this.cdol = false;
-    }, 2000);
-  },
+  naira() {
+  this.currency = 'naira'
+  localStorage.setItem('currency', 'naira')
 
-checkout() {
-      // Redirect the user to the new PHP page
-    window.location.href = 'newp.php';
+  this.products.forEach(product => {
+    product.showDesc = false
+  })
+
+  this.cno = true
+  setTimeout(() => {
+    this.cno = false
+  }, 2000)
 },
 
+dollar() {
+  this.currency = 'dollar'
+  localStorage.setItem('currency', 'dollar')
+
+  this.products.forEach(product => {
+    product.showDesc = true
+  })
+
+  this.cdol = true
+  setTimeout(() => {
+    this.cdol = false
+  }, 2000)
+},
+
+  // dollar() {
+  //   this.products.forEach(product => {
+  //     product.showDesc = true
+  //   });
+  //   this.cdol = true;
+  //   setTimeout(() => {
+  //     this.cdol = false;
+  //   }, 2000);
+  // },
+
+// checkout() {
+//     window.location.href = 'newp.php';
+// },
+
+
+checkout() {
+  if (this.currency === 'naira') {
+    // Redirect the user to the Naira checkout page
+    window.location.href = 'https://www.youtube.com/';
+  } else if (this.currency === 'dollar') {
+    // Redirect the user to the Dollar checkout page
+    window.location.href = 'https://www.my9jarocks.wf/';
+  } else {
+    // Handle the case where the currency value is invalid or not set
+    console.error('Invalid or unset currency value!');
+  }
+},
 
 
 // fetchData: function() {

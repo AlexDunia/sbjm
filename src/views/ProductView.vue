@@ -287,12 +287,13 @@ data(){
 },
 
       buttons: [
-      { id: 1, label: "S" },
-      { id: 2, label: "Medium" },
-      { id: 3, label: "Large" },
-      { id: 3, label: "XL" },
-      { id: 3, label: "XXL" },
-      { id: 3, label: "X" },
+      { id: 1, label: "8" },
+      { id: 2, label: "10" },
+      { id: 4, label: "12" },
+      { id: 5, label: "14" },
+      { id: 6, label: "16" },
+      { id: 7, label: "18" },
+      { id: 8, label: "20" },
     ],
 
     // s: "Small",
@@ -617,6 +618,7 @@ selectImage(index) {
         padding:5px 10px 5px 10px;
         border:2px solid transparent;
         margin-top: -10px;
+        cursor:pointer;
     }
 
     .nop{
@@ -719,6 +721,7 @@ selectImage(index) {
 
     .QuantitySelector--large .QuantitySelector__Button {
         padding: 5px 20px;
+        cursor:pointer;
     }
 
     .QuantitySelector--large svg {

@@ -439,6 +439,7 @@ export default {
   text-decoration: none;
     color: #81A695;
     font-weight: 500;
+    cursor:pointer;
 }
 
 .pnamer:hover {
