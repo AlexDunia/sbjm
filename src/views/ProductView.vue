@@ -119,7 +119,7 @@
       <div class="smallimg">
         <div class="productflexc" v-for="(image, index) in images" :key="index" @click="selectImage(index)">
       <img :src="image" alt="Image">
-    </div>
+      </div>
 
       <!-- <div className="productflexc">
         <img :src="image" alt="Image">
@@ -221,9 +221,10 @@
 
     <!-- <Cpage/> -->
 
-    <div>
+    <div class="info">
       <p> {{ info }} </p>
     </div>
+
   </template>
   <script>
   // import Cpage from ' ./CartView.vue'
@@ -364,6 +365,7 @@ methods: {
 //     this.cart = cart;
 //     console.log(this.cart);
 //   },
+
 showsizeguide(){
   this.sizeguide = true
 },
@@ -456,7 +458,6 @@ selectImage(index) {
 // //   localStorage.setItem('quantity', this.sizes['quantity']);
 // //   console.log(quantity);
 // // },
-
 
     decreasevalue(){
         this.sizes['quantity'] = document.getElementById('vi').value --;
@@ -782,6 +783,21 @@ selectImage(index) {
   100% {
     transform: translateX(0%) translateY(0%) scale(1);
   }
+}
+
+.info {
+  width:85%;
+  margin:auto;
+  margin-top:50px;
+}
+
+/* .info h4{
+  color:#81A695;
+} */
+
+.info p{
+  line-height:1.5rem;
+  font-size:16px;
 }
 
     @media (max-width: 1000px){

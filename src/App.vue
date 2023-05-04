@@ -11,6 +11,20 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} bbtfoods\.com\.ng [NC]
 RewriteCond %{SERVER_PORT} 80
 RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
+<div v-if="cno" class="cartnotification-wrapper">
+        <div class="cartnotification">
+     <p> Your default currency has been changed to naira (<i class="fa-solid fa-naira-sign"></i>) </p>
+    </div>
+</div>
+
+<div v-if="cdol" class="cartnotification-wrapper">
+        <div class="cartnotification">
+     <p> Your default currency has been changed to US dollars (<i class="fa-solid fa-dollar-sign">
+     </i>)
+    </p>
+    </div>
+</div>
+
 
   <div>
 
@@ -82,10 +96,10 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
 
       <div class="smain">
       <i class="fa-solid fa-magnifying-glass fa-2x" id="iconcolortwo"> </i>
-    </div>
+      </div>
 
     <div class="sinput">
-      <input type="search" name="type" placeholder="Search" v-model="query" @keyup="fetchData()" >
+      <input type="search" name="type" placeholder="Search" v-model="query" @keyup.enter="fetchData">
     </div>
 
     <div class="scancelthree" @click="stopshowmys">
@@ -107,15 +121,17 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
 </div> -->
 
 <div class="sinput">
-  <input type="search" name="type" placeholder="Search here" v-model="query" @keyup="fetchData()">
+  <input type="search" name="type" placeholder="Search here" v-model="query" @keyup.enter="fetchData">
 </div>
   <a> <router-link to="/cart">
     <img src="./assets/images/sb.png" class="cartimg" id="cimm"/>
   </router-link>
  </a>
+
  <!-- <a> <router-link to="/cart"> <i class="fa-solid fa-cart-shopping" id="iconcolor"></i> </router-link> </a> -->
     <!-- <img src="./assets/images/sb.png" class="cartimg"/> -->
     <!-- <span class="dottwo">6</span> -->
+
     <i class="fa-solid fa-bars fa-2x" @click="navmobiletoggle()" id="iconcolor"> </i>
 
 </div>
@@ -149,39 +165,18 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
 <!-- Change Currency -->
 <div class="buttondiv">
 <br/>
-<div class="cbtn">
-<button> NGN </button>
+<div class="cbtn" >
+<button @click="naira"> NGN </button>
 </div>
 
 <div class="cbtn">
-<button> USD </button>
+<button @click="dollar"> USD </button>
 </div>
 
 </div>
 <!-- End change currency  -->
 
-<div class="pgridoverlay" v-if="dboverlay">
 
-<div  className="pgridcmargin">
-
-<div className="pgridc">
-  <div v-for="(row, index) in allData" :key="index">
-  <p> <img :src="row.image"/> </p>
-    <!-- <p className="pname"  @click="viewProduct(product.id)"> {{product.title}}  </p> -->
-    <p className="pname"  @click="getProductDetails(row.id)"> {{row.title}}  </p>
-    <!-- getProductDetails(productId) -->
-    <!-- <p className="pname"> <a> <router-link to="/product"> {{product.title}}  </router-link> </a></p> -->
-    <div class="catflex">
-  <p className="pprice"> {{row.price}}  </p>
-  <!-- <p className="pprice" id="cat"> {{product.category}}  </p> -->
-  <p className="pprice" id="cat"> Category  </p>
-  </div>
-  </div>
-
-  </div>
-
-</div>
-</div>
 
 
   <br/>
@@ -189,8 +184,7 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
 
 <div v-if="nodata">
 
-								<h1> No Data Found </h1>
-
+  <h1> No Data Found </h1>
 
 </div>
 
@@ -207,6 +201,8 @@ export default{
     return{
     allData:'',
 		query:'',
+    cno:false,
+    cdol:false,
     dboverlay:false,
 		nodata:false,
      products:[],
@@ -286,7 +282,8 @@ export default{
     mounted() {
       axios
       // .get(`myproducts.php`)
-      .get(`index.php`)
+      // .get(`myproducts.php`)
+      .get(`http://localhost/index.php`)
       .then((response) => {
       // JSON responses are automatically parsed.
         this.products = response.data
@@ -355,18 +352,64 @@ export default{
 //     console.log(this.cart);
 // },
 
+naira(){
+    // this.products.forEach(product => {
+    //   product.showDesc = !product.showDesc;
+    // });
+    this.products.forEach(product => {
+      product.showDesc = false
+    });
+    this.cno = true;
+    setTimeout(() => {
+      this.cno = false;
+    }, 2000);
+    },
+
+  dollar() {
+    this.products.forEach(product => {
+      product.showDesc = true
+    });
+    this.cdol = true;
+    setTimeout(() => {
+      this.cdol = false;
+    }, 2000);
+  },
+
 checkout() {
       // Redirect the user to the new PHP page
     window.location.href = 'newp.php';
 },
 
+
+
+// fetchData: function() {
+//   const vm = this; // Save reference to 'this' in a variable to avoid confusion with 'this' inside the axios callback function
+
+//   // axios.post('http://localhost/s.php', {
+//     https://styledbyjm.com.ng/index.php
+
+//     axios.post('http://localhost/s.php', {
+//     query: vm.query // Use the reference to 'this' inside the axios call to get the query property value
+//   }).then(function(response){
+//     if(response.data && response.data.length > 0) {
+//       // Check that response.data is not null or undefined before checking its length property
+//       vm.allData = response.data;
+//       console.log(response.data)
+//       vm.dboverlay = true;
+//       vm.nodata = false; // Use the reference to 'this' inside the axios callback function to set the nodata property value
+//       console.log("omo");
+//     } else {
+//       console.log("fail")
+//       vm.allData = '';
+//       vm.nodata = true; // Use the reference to 'this' inside the axios callback function to set the nodata property value
+//     }
+//   });
+// },
+
 fetchData: function() {
   const vm = this; // Save reference to 'this' in a variable to avoid confusion with 'this' inside the axios callback function
 
-  // axios.post('http://localhost/s.php', {
-    https://styledbyjm.com.ng/index.php
-
-    axios.post('s.php', {
+  axios.post('http://localhost/s.php', {
     query: vm.query // Use the reference to 'this' inside the axios call to get the query property value
   }).then(function(response){
     if(response.data && response.data.length > 0) {
@@ -376,6 +419,9 @@ fetchData: function() {
       vm.dboverlay = true;
       vm.nodata = false; // Use the reference to 'this' inside the axios callback function to set the nodata property value
       console.log("omo");
+
+      // Navigate to search results page with the search query as a parameter
+      vm.$router.push({ path: '/search-results', query: { q: vm.query } })
     } else {
       console.log("fail")
       vm.allData = '';
@@ -383,6 +429,7 @@ fetchData: function() {
     }
   });
 },
+
 
 rs(){
   this.dboverlay = false;
@@ -454,7 +501,7 @@ increasevalue(){
     console.log(productId);
     // axios.post('http://localhost/gpd.php', { id: productId })
     // axios.post('https://styledbyjm.com.ng/gpd.php', { id: productId })
-    axios.post('gpd.php', { id: productId })
+    axios.post('http://localhost/gpd.php', { id: productId })
       .then(response => {
         this.selectedProducts = response.data
         console.log(this.selectedProducts);
@@ -491,7 +538,7 @@ getP(productId) {
     console.log(productId);
     // axios.post('http://localhost/gpd.php', { id: productId })
     // axios.post('https://styledbyjm.com.ng/gpd.php', { id: productId })
-    axios.post('gpd.php', { id: productId })
+    axios.post('http://localhost/gpd.php', { id: productId })
       .then(response => {
         this.selectedProducts = response.data
         console.log(this.selectedProducts);
@@ -538,7 +585,7 @@ getP(productId) {
   }
 </script>
 
-<style>
+<style >
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 

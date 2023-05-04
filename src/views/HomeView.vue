@@ -77,6 +77,18 @@
     <div className="pw">
       <div class="cil">
 
+     <div className="pgridc">
+     <div v-for="(product, i) in productlist" :key="i">
+     <div class="catflex">
+     <p v-if="!product.showDesc" class="pprice"> {{product.price}} </p>
+     <p v-if="product.showDesc" class="pprice">  {{product.description}} </p>
+     </div>
+
+  </div>
+</div>
+<!-- <button @click="toggleDesc">Show Description</button> -->
+
+
     <h1> Latest Arrivals </h1>
       </div>
 
@@ -101,6 +113,7 @@
   <div class="catflex">
 
     <p class="pprice"> {{product.price}}  </p>
+    <p class="pprice"> {{product.description}}  </p>
 
 
    <!-- <p className="pprice" @click="changePrice(product)"> {{product.price}}  </p> -->
@@ -254,6 +267,12 @@ export default {
   // },
 
   methods: {
+
+  //   toggleDesc() {
+  //   this.productlist.forEach(product => {
+  //     product.showDesc = !product.showDesc;
+  //   });
+  // },
 
   //   convertToUSD(ptc) {
   //   return ptc * this.er;
