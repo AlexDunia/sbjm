@@ -445,7 +445,6 @@ checkout() {
 
 fetchData: function() {
   const vm = this; // Save reference to 'this' in a variable to avoid confusion with 'this' inside the axios callback function
-
   axios.post('http://localhost/s.php', {
     query: vm.query // Use the reference to 'this' inside the axios call to get the query property value
   }).then(function(response){
@@ -555,6 +554,7 @@ increasevalue(){
         const {imagethree} = response.data;
         const {description} = response.data;
         const {info} = response.data;
+        const {meaning} = response.data;
         this.$router.push(`/view/${productId}`);
         // Store the title value in the localStorage
         localStorage.setItem('title', title);
@@ -564,6 +564,7 @@ increasevalue(){
         localStorage.setItem('imagethree', imagethree);
         localStorage.setItem('description', description);
         localStorage.setItem('info', info);
+        localStorage.setItem('meaning', meaning);
       })
       .catch(error => {
         console.log(error); // Debugging line
@@ -592,6 +593,7 @@ getP(productId) {
         const {imagethree} = response.data;
         const {description} = response.data;
         const {info} = response.data;
+        const {meaning} = response.data;
         this.$router.push(`/view/${productId}`);
         // Store the title value in the localStorage
         localStorage.setItem('title', title);
@@ -601,6 +603,7 @@ getP(productId) {
         localStorage.setItem('imagethree', imagethree);
         localStorage.setItem('description', description);
         localStorage.setItem('info', info);
+        localStorage.setItem('meaning', meaning);
       })
       .catch(error => {
         console.log(error); // Debugging line

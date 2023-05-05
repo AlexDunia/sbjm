@@ -130,7 +130,16 @@
   <br/>
   <br/>
 
+  <!-- <div :style="{ backgroundImage: `url(${Dcbg})` }" class="dcbg"> -->
+    <div class="dcbg">
+    <!-- Your content here -->
+  </div>
+
   <!-- <Footer></Footer> -->
+  <br/>
+  <br/>
+  <br/>
+  <br/>
 
   <Footer/>
 
@@ -140,6 +149,7 @@
 import Oneimg from '../assets/images/nita.png'
 import Twoimg from '../assets/images/bj.png'
 import Threeimg from '../assets/images/orangee.png'
+import Dcbg from '../assets/images/dcbg.jpg'
 // import Threeimg from '../assets/images/fladylong2.jpg'
 // Product images.
 import Pone from '../assets/images/flady.jpg'
@@ -434,6 +444,22 @@ export default {
 
 </script>
 <style>
+
+.dcbg{
+  /* background-image: url('path/to/image.jpg'); */
+  background-image: url('../assets/images/dcbg.jpg');
+  background-position: center;
+  background-size: cover;
+  height:70vh;
+  width:100%;
+
+  /* background-size: cover;
+  background-repeat: no-repeat;
+  height: 70vh;
+  object-fit: cover;
+  width: 100%; */
+}
+
 
 .pname{
   text-decoration: none;

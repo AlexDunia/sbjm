@@ -157,6 +157,7 @@
 
      <div>
      <h3 className="nop"> {{ title }} </h3>
+     <p className="nom"> {{ meaning }} </p>
      </div>
 
      <div class="schart" @click="showsizeguide">
@@ -262,6 +263,7 @@ data(){
     imagetwo: localStorage.getItem('imagetwo'),
     imagethree: localStorage.getItem('imagethree'),
     description: localStorage.getItem('description'),
+    meaning: localStorage.getItem('meaning'),
     info: localStorage.getItem('info'),
     cartNotificationVisible: false,
 
@@ -586,7 +588,6 @@ selectImage(index) {
     z-index: 10px;
 }
 
-
 .sizeflex{
   display:flex;
   justify-content:space-around;
@@ -612,7 +613,7 @@ selectImage(index) {
     flex-basis: 45%;
     margin-top: -30px;
 }
-    .btnsize{
+     .btnsize{
         margin-right:15px;
         font-size:13px;
         padding:5px 10px 5px 10px;
@@ -622,8 +623,16 @@ selectImage(index) {
     }
 
     .nop{
-        color:#434343;
-        font-weight: 500;
+        color:#81A695;
+        font-weight: 800;
+    }
+
+    .nom{
+        color:rgb(19, 18, 18);
+        font-weight: 350;
+        font-size:13px;
+        margin-bottom:25px;
+        margin-top: -15px;
     }
 
     .chose {
@@ -667,6 +676,7 @@ selectImage(index) {
     background:#f0f0f0;
     border: rgb(66, 66, 66, 0.3) 0.4px solid;
     padding:7px 10px 7px 10px;
+    cursor:pointer;
    }
 
    .productflex{
