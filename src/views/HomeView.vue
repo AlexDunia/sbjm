@@ -113,7 +113,6 @@
   <div class="catflex">
 
     <p class="pprice"> {{product.price}}  </p>
-    <p class="pprice"> {{product.description}}  </p>
 
 
    <!-- <p className="pprice" @click="changePrice(product)"> {{product.price}}  </p> -->
@@ -130,13 +129,49 @@
   <br/>
   <br/>
 
+
+
   <!-- <div :style="{ backgroundImage: `url(${Dcbg})` }" class="dcbg"> -->
     <div class="dcbg">
     <!-- Your content here -->
+    <img src="../assets/images/sbjwhite.png"/>
   </div>
 
   <!-- <Footer></Footer> -->
   <br/>
+  <br/>
+  <br/>
+  <br/>
+
+  <div class="cil">
+    <h1> TOP CATEGORIES </h1>
+  </div>
+
+  <div class="tcdiv">
+
+<div class="topcategories">
+  <img src="../assets/images/sbjmgowns.jpg"/>
+  <img class="hover-img" src="../assets/images/sbjmgownstwo.jpg"/>
+  <div class="centered-text"> Gowns</div>
+</div>
+
+<div class="topcategories">
+  <img src="../assets/images/sbjmtops.jpg"/>
+  <img class="hover-img" src="../assets/images/sbjmtopstwo.jpg"/>
+  <div class="centered-text"> Tops</div>
+</div>
+
+<div class="topcategories">
+  <img src="../assets/images/sbjmtwop.jpg"/>
+  <img class="hover-img" src="../assets/images/sbjmtwoptwo.jpg"/>
+  <div class="centered-text"> Two Piece</div>
+</div>
+
+</div>
+
+
+
+<br/>
   <br/>
   <br/>
   <br/>
@@ -149,6 +184,9 @@
 import Oneimg from '../assets/images/nita.png'
 import Twoimg from '../assets/images/bj.png'
 import Threeimg from '../assets/images/orangee.png'
+import Sgown from '../assets/images/sbjmgowns.jpg'
+import Stops from '../assets/images/sbjmtops.jpg'
+import Stwop from '../assets/images/sbjmtwop.jpg'
 import Dcbg from '../assets/images/dcbg.jpg'
 // import Threeimg from '../assets/images/fladylong2.jpg'
 // Product images.
@@ -460,6 +498,15 @@ export default {
   width: 100%; */
 }
 
+.dcbg img {
+    margin: auto;
+    align-items: center;
+    display: flex;
+    padding-top:150px;
+    justify-content: center;
+    width: 180px;
+}
+
 
 .pname{
   text-decoration: none;
@@ -716,6 +763,72 @@ text-align:center;
   font-size:13px;
   margin-top:-8px;
 }
+
+/* <div class="tcdiv">
+
+<div class="topcategories">
+  <img src="../assets/images/sbjmgowns.jpg"/>
+</div>
+
+<div class="topcategories">
+  <img src="../assets/images/sbjmtops.jpg"/>
+</div>
+
+<div class="topcategories">
+  <img src="../assets/images/sbjmtwop.jpg"/>
+</div>
+
+</div> */
+
+.tcdiv{
+  display:flex;
+  justify-content:space-around;
+  width:95%;
+  margin:auto;
+}
+
+.topcategories {
+  position: relative;
+}
+
+.topcategories img{
+  width:350px;
+}
+
+.centered-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  color: rgb(212, 210, 210);
+  font-size: 27px;
+  font-family:inter;
+  /* font-weight: bold; */
+}
+
+
+.hover-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease-in;
+}
+
+.topcategories:hover .hover-img {
+  opacity: 1;
+}
+
+.topcategories:hover .centered-text {
+  background-color: #81a695;
+  width:50%;
+  padding:10px;
+  font-size: 21px;
+  font-weight:500;
+}
+
 
 @media (max-width: 1200px){
 

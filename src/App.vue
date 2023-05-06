@@ -68,14 +68,15 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
   <nav className="navlinks">
 
     <div className="catlinks">
-    <a class="nl"> <router-link to="/"> Tops </router-link> </a>
-    <a class="nl"> <router-link to="/"> Pants </router-link> </a>
-    <a class="nl"> <router-link to="/"> Skirt </router-link> </a>
-    <a class="nl"> <router-link to="/"> Gown </router-link> </a>
-    <a class="nl"> <router-link to="/"> Bubu </router-link> </a>
-    <a class="nl"> <router-link to="/"> Jumpsuit </router-link> </a>
-    <a class="nl"> <router-link to="/"> Swim Wear </router-link> </a>
-    <a class="nl"> <router-link to="/"> Swim Cover </router-link> </a>
+    <a class="nl"> <router-link to="/"> Home </router-link> </a>
+    <a class="nl"> <router-link to="/tops"> Tops </router-link> </a>
+    <a class="nl"> <router-link to="/pants"> Pants </router-link> </a>
+    <a class="nl"> <router-link to="/skirt"> Skirt </router-link> </a>
+    <a class="nl"> <router-link to="/gown"> Gown </router-link> </a>
+    <a class="nl"> <router-link to="/bubu"> Bubu </router-link> </a>
+    <a class="nl"> <router-link to="/jumpsuit"> Jumpsuit </router-link> </a>
+    <a class="nl"> <router-link to="/swimwear"> Swim Wear </router-link> </a>
+    <a class="nl"> <router-link to="/swimcover"> Swim Cover </router-link> </a>
     <a class="nl"> <router-link to="/contact"> Contact </router-link> </a>
     </div>
 

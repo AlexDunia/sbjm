@@ -6,6 +6,16 @@ import ContactinfoView from '../views/ContactinfoView.vue'
 import ProductView from '../views/ProductView.vue'
 import ContactView from '../views/ContactView.vue'
 import SearchResults from '../views/SearchView.vue'
+import TopView from '../views/TopView.vue'
+import PantView from '../views/PantsView.vue'
+import SkirtView from '../views/SkirtView.vue'
+import GownView from '../views/GownView.vue'
+import BubuView from '../views/BubuView.vue'
+import JumpsuitView from '../views/JumpsuitView.vue'
+import SwimwearView from '../views/SwimwearView.vue'
+import SwimcoverView from '../views/SwimcoverView.vue'
+
+
 
 const routes = [
   {
@@ -37,6 +47,46 @@ const routes = [
     path: '/view/:id',
     name: 'Productzz',
     component: ProductView
+  },
+  {
+    path: '/tops',
+    name: 'Top',
+    component: TopView
+  },
+  {
+    path: '/pants',
+    name: 'Pant',
+    component: PantView
+  },
+  {
+    path: '/skirt',
+    name: 'Skirt',
+    component: SkirtView
+  },
+  {
+    path: '/gown',
+    name: 'Gown',
+    component: GownView
+  },
+  {
+    path: '/bubu',
+    name: 'Bubu',
+    component: BubuView
+  },
+  {
+    path: '/jumpsuit',
+    name: 'Jumpsuit',
+    component: JumpsuitView
+  },
+  {
+    path: '/swimwear',
+    name: 'Swimwear',
+    component: SwimwearView
+  },
+  {
+    path: '/swimcover',
+    name: 'Swimcover',
+    component: SwimcoverView
   },
   {
     path: '/search-results',

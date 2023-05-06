@@ -1,4 +1,24 @@
 <template>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+
+<!-- <div>
+    <h1>Items in category: {{ category }}</h1>
+    <ul>
+      <li v-for="item in items" :key="item.id">
+        {{ item.title }}
+      </li>
+    </ul>
+  </div> -->
+
+  <h1> Hello </h1>
+
+
     <div class="cflex">
 
         <div class="ci">
@@ -56,8 +76,29 @@
 </template>
 
 <script>
-
+export default {
+  data() {
+    return {
+      items: [],
+    };
+  },
+  mounted() {
+    fetch('http://localhost/tops.php')
+      .then((response) => response.json())
+      .then((data) => {
+        this.items = data;
+        console.log(this.items)
+      })
+      .catch((error) => {
+        console.error('Error fetching items:', error);
+      });
+  },
+};
 </script>
+
+
+
+
 
 <style>
 
