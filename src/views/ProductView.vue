@@ -1,4 +1,5 @@
 <template>
+
   <!-- <div v-for="item in cartItems" :key="item.id">
         <h2>{{ item.name }}</h2>
         <p>Price: {{ item.price }}</p>
@@ -10,6 +11,54 @@
           {{ item.nop }}
         </li>
         </ul> -->
+
+        <!-- <div  v-for="(info, index) in sizes" :key="index" @click="logItem(info)">
+         <h3 className="nop"> {{ info.nop }} </h3>
+         <h4 className="chose"> {{ info.price }} </h4>
+        </div> -->
+        <!-- showsizeguide(){
+  this.sizeguide = true
+},
+
+showadinfoguide(){
+  this.adinfo = true
+},
+
+hidesizeguide(){
+  this.sizeguide = false
+}, -->
+
+        <div class="popupwrapperwithdraw" v-if="adinfo">
+          <div class="popupwithdraw" id="popupwhitewithdraw">
+
+<div class="xmark">
+  <i class="fa-solid fa-xmark"></i>
+</div>
+
+<div>
+  <h1> Helloy</h1>
+</div>
+
+     <ul>
+      <li v-for="sentence in formattedAd" :key="sentence">{{ sentence }}</li>
+    </ul>
+
+
+
+
+<!-- <div>
+  <div v-for="(productz, i) in productlist" :key="i">
+    <ul>
+      <li v-for="onepoint in productz.additionalinfo.split('.')" :key="onepoint">
+        {{ onepoint }}
+      </li>
+    </ul>
+  </div>
+</div> -->
+
+</div>
+
+ </div>
 
         <div class="popupwrapperwithdraw" v-if="sizeguide">
 
@@ -89,6 +138,7 @@
           </div>
 
           </div>
+
         <!-- <div class="mainpopnavigationwithdraw">
           <div class="arrowback">
             <i class="fa-solid fa-arrow-left"></i></div>
@@ -104,8 +154,10 @@
                   <div><button class="withdrawbtn"> Select Bank and Account </button>
                   </div>
         </div> -->
+
       </div>
     </div>
+
     <!-- We can use an if statement. Vif. then we make it a default of false.  -->
 
         <div v-if="cartNotificationVisible" class="cartnotification-wrapper">
@@ -147,10 +199,12 @@
         <br/>
         <br/>
         <br/>
+
         <!-- <div  v-for="(info, index) in sizes" :key="index" @click="logItem(info)">
          <h3 className="nop"> {{ info.nop }} </h3>
          <h4 className="chose"> {{ info.price }} </h4>
         </div> -->
+
     <div>
 
       <div class="pinfosizeflex">
@@ -166,18 +220,26 @@
 
       </div>
 
+      <div class="pinfosizeflex">
+
      <div>
         <p class="pricetag"> Price: </p>
          <h4 className="chose"> {{ price }} </h4>
          <!-- <img src="{{ image }}"/> -->
     </div>
 
+    <div class="schart" @click="showadinfoguide">
+        <button> <i class="fa-solid fa-book"></i> Note </button>
+      </div>
+
+    </div>
 
 
     </div>
 
         <!-- When working with an array, you could either use an index and place it in as a parameter like we are used to
         or we do it the new way of picking that one directly -->
+
         <p class="pricetag"> Sizes: </p>
         <button v-for="(button, index) in buttons" :key="button.label"  @click="handleClick(button.label)"
         :style="{ borderColor: currentBorderColor === index ? '#26A76B' : 'transparent' }"
@@ -221,10 +283,66 @@
     <!-- <Try :cartitems="cart" /> -->
 
     <!-- <Cpage/> -->
-
     <div class="info">
       <p> {{ info }} </p>
     </div>
+
+
+    <div class="minfoflex">
+
+    <div class="minfo">
+
+      <h2> More information </h2>
+
+      <ul>
+      <li v-for="desclist in formatteddesc" :key="desclist">{{ desclist }}</li>
+    </ul>
+    </div>
+
+    <div class="ctable">
+
+    <table class="custom-table">
+
+  <tr>
+  <th> Shipping and Delivery </th>
+  <th> Within Lagos (Working days) </th>
+  <th> Outside Lagos (Working days) </th>
+  <th> Outside Nigeria (Working days) </th>
+  </tr>
+
+  <tr>
+  <td> Days </td>
+  <td> 1-2 </td>
+  <td> 3-4 </td>
+  <td> 5-7</td>
+  </tr>
+
+</table>
+
+</div>
+
+</div>
+
+    <!-- <div>
+  <div v-for="(productz, i) in productlist" :key="i">
+    <ul>
+      <li>
+        {{ productz.additionalinfo }}
+      </li>
+      <li v-for="onepoint in productz.additionalinfo.split('.')" :key="onepoint">
+        {{ onepoint }}
+      </li>
+    </ul>
+  </div>
+</div> -->
+
+<!-- <div v-for="result in productlist" :key="result.id">
+  <ul>
+    <li v-for="line in result.description.split('.')" :key="line">{{ line.trim() }}</li>
+  </ul>
+</div> -->
+
+<!-- <h1> {{ ad }} </h1> -->
 
   </template>
   <script>
@@ -233,7 +351,9 @@
     import Try from './CartView.vue';
     import pone from '../assets/images/pinkimg1.jpg'
     export default {
-// props: ['addtocart', 'buttons'],
+
+    props: ['productlist'],
+
   components: {
   Try
 },
@@ -242,6 +362,7 @@
 data(){
   return{
     sizeguide: false,
+    adinfo: false,
     images: [
         localStorage.getItem('image'),
         localStorage.getItem('imagetwo'),
@@ -265,6 +386,7 @@ data(){
     description: localStorage.getItem('description'),
     meaning: localStorage.getItem('meaning'),
     info: localStorage.getItem('info'),
+    ad: localStorage.getItem('ad'),
     cartNotificationVisible: false,
 
     mounted() {
@@ -275,12 +397,14 @@ data(){
     .then(response => {
      // this.product = this.selected,
      this.product = response.data
+
   // localStorage.getItem('id', productId);
 
 //   const cart = JSON.parse(localStorage.getItem('cart')) || [];
 // this.cart = cart;
 
 // this.cartLength = localStorage.getItem('cartLength') || 0;
+
 });
 
 // const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -343,6 +467,25 @@ data(){
   };
 },
 
+computed: {
+    formattedAd() {
+      const ad = localStorage.getItem('ad');
+      if (ad) {
+        return ad.split('. ');
+      } else {
+        return [];
+      }
+    },
+    formatteddesc() {
+      const desc = localStorage.getItem('description');
+      if (desc) {
+        return desc.split('. ');
+      } else {
+        return [];
+      }
+    }
+  },
+
 // computed: {
 //   cartItems() {
 //     const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -358,6 +501,18 @@ data(){
 
 methods: {
 
+  showsizeguide(){
+  this.sizeguide = true
+},
+
+showadinfoguide(){
+  this.adinfo = true
+},
+
+hidesizeguide(){
+  this.sizeguide = false
+},
+
 //  addtocart() {
 //     const newItem = {
 //       quantity: this.sizes.quantity,
@@ -369,13 +524,7 @@ methods: {
 //     console.log(this.cart);
 //   },
 
-showsizeguide(){
-  this.sizeguide = true
-},
 
-hidesizeguide(){
-  this.sizeguide = false
-},
 selectImage(index) {
       this.selectedImage = this.images[index];
     },
@@ -532,7 +681,58 @@ selectImage(index) {
 
     </script> -->
 
-    <style>
+<style>
+
+.minfoflex{
+  display:flex;
+  justify-content:space-between;
+  width:95%;
+  margin:auto;
+  margin-top:60px;
+  margin-bottom:70px;
+}
+
+.minfo h2{
+  margin-left:40px;
+  font-size:18px;
+  margin-bottom:20px;
+}
+
+.custom-table {
+  border-collapse: collapse;
+  width: 80%;
+  margin:auto;
+  margin-top:20px;
+}
+
+.custom-table th,
+.custom-table td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: left;
+}
+
+.custom-table th{
+  background: #f3f2f2;
+  font-size:13px;
+}
+
+.custom-table td{
+ font-size:13px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li{
+  padding-bottom:18px;
+}
+
+ul li:before {
+  content: "-";
+  margin-right: 20px;
+}
 
     /* .productflex{
         display:flex;
@@ -814,6 +1014,31 @@ selectImage(index) {
 }
 
     @media (max-width: 1000px){
+
+  .minfoflex{
+  display:block;
+  width:95%;
+  margin:auto;
+  margin-top:60px;
+}
+
+.custom-table {
+  border-collapse: collapse;
+  width: 95%;
+  margin:auto;
+  margin-top:20px;
+  margin-bottom:60px;
+}
+
+.custom-table th{
+  background: #f3f2f2;
+  font-size:11px;
+}
+
+.custom-table td{
+ font-size:11px;
+}
+
 
     .productflex {
     display: block;

@@ -76,7 +76,7 @@
 
     <div className="pw">
       <div class="cil">
-
+<!--
      <div className="pgridc">
      <div v-for="(product, i) in productlist" :key="i">
      <div class="catflex">
@@ -84,8 +84,9 @@
      <p v-if="product.showDesc" class="pprice">  {{product.description}} </p>
      </div>
 
-  </div>
-</div>
+    </div>
+    </div> -->
+
 <!-- <button @click="toggleDesc">Show Description</button> -->
 
 
@@ -112,13 +113,11 @@
 
   <div class="catflex">
 
-    <p class="pprice"> {{product.price}}  </p>
+    <!-- <p class="pprice"> {{product.price}}  </p>
+   <p className="pprice" id="cat"> {{product.categories}} </p> -->
 
-
-   <!-- <p className="pprice" @click="changePrice(product)"> {{product.price}}  </p> -->
-   <!-- <p className="pprice" id="cat"> {{product.category}}  </p> -->
-
-   <p className="pprice" id="cat"> {{product.categories}} </p>
+   <p v-if="!product.showDesc" class="pprice"> N{{product.price}} </p>
+     <p v-if="product.showDesc" class="pprice">  ${{product.dollarprice}} </p>
 
   </div>
   </div>

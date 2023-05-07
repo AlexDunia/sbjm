@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ProductsView from '../views/ProductinfoView.vue'
 import CartView from '../views/CartView.vue'
-import ContactinfoView from '../views/ContactinfoView.vue'
+// import ContactinfoView from '../views/ContactinfoView.vue'
 import ProductView from '../views/ProductView.vue'
 import ContactView from '../views/ContactView.vue'
 import SearchResults from '../views/SearchView.vue'
@@ -33,11 +33,11 @@ const routes = [
     name: 'cart',
     component: CartView
   },
-  {
-    path: '/contactinformation',
-    name: 'contactinformation',
-    component: ContactinfoView
-  },
+  // {
+  //   path: '/contactinformation',
+  //   name: 'contactinformation',
+  //   component: ContactinfoView
+  // },
   {
     path: '/contact',
     name: 'contact',

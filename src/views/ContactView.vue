@@ -46,7 +46,15 @@
             compliments, do well to reach out.
         </p> -->
 
-        <form id="myForm" class="add-form">
+        <!-- <form id="myForm" class="add-form"> -->
+          <form id="myForm" class="add-form" ref="form" @submit.prevent="sendEmail">
+
+    <!-- <input type="text" name="user_name">
+    <label>Email</label>
+    <input type="email" name="user_email">
+    <label>Message</label>
+    <textarea name="message"></textarea>
+    <input type="submit" value="Send"> -->
 
                 <div>
 
@@ -65,7 +73,8 @@
                         </div><div >
                             <label for="subject" > Subject </label>
                             <br >
-                            <input class="formname" name="message" type="text" >
+                            <textarea class="formname" name="message" type="text"></textarea>
+                            <!-- <input class="formname" name="message" type="text" > -->
                             </div><div class="contactus">
                                 <button type="submit"> Send Message </button>
                                 </div>
@@ -76,12 +85,25 @@
 </template>
 
 <script>
+import emailjs from '@emailjs/browser';
+
 export default {
   data() {
     return {
       items: [],
     };
   },
+  methods: {
+    sendEmail() {
+      emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this.$refs.form, 'YOUR_PUBLIC_KEY')
+        .then((result) => {
+            console.log('SUCCESS!', result.text);
+        }, (error) => {
+            console.log('FAILED...', error.text);
+        });
+    }
+  }
+,
   mounted() {
     fetch('http://localhost/tops.php')
       .then((response) => response.json())

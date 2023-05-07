@@ -11,6 +11,7 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} bbtfoods\.com\.ng [NC]
 RewriteCond %{SERVER_PORT} 80
 RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
+
 <div v-if="cno" class="cartnotification-wrapper">
         <div class="cartnotification">
      <p> Your default currency has been changed to naira (<i class="fa-solid fa-naira-sign"></i>) </p>
@@ -24,7 +25,6 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
     </p>
     </div>
 </div>
-
 
   <div>
 
@@ -209,7 +209,7 @@ export default{
     cdol:false,
     dboverlay:false,
 		nodata:false,
-     products:[],
+    products:[],
     //  mycart:localStorage.getItem('cart'),
      my:[],
     //  cartnum:0,
@@ -218,8 +218,8 @@ export default{
      shows:false,
      selectedProducts:{},
      cartLength: parseInt(localStorage.getItem("cartLength") || "0"),
-      cart: [],
-      product: {},
+     cart: [],
+     product: {},
       localStorageArray: [],
       // title: localStorage.getItem('title'),
       // price: localStorage.getItem('price'),
@@ -559,6 +559,7 @@ increasevalue(){
         const {description} = response.data;
         const {info} = response.data;
         const {meaning} = response.data;
+        const {additionalinfo} = response.data;
         this.$router.push(`/view/${productId}`);
         // Store the title value in the localStorage
         localStorage.setItem('title', title);
@@ -569,6 +570,7 @@ increasevalue(){
         localStorage.setItem('description', description);
         localStorage.setItem('info', info);
         localStorage.setItem('meaning', meaning);
+        localStorage.setItem('ad', additionalinfo);
       })
       .catch(error => {
         console.log(error); // Debugging line
@@ -598,6 +600,7 @@ getP(productId) {
         const {description} = response.data;
         const {info} = response.data;
         const {meaning} = response.data;
+        const {additionalinfo} = response.data;
         this.$router.push(`/view/${productId}`);
         // Store the title value in the localStorage
         localStorage.setItem('title', title);
@@ -608,6 +611,7 @@ getP(productId) {
         localStorage.setItem('description', description);
         localStorage.setItem('info', info);
         localStorage.setItem('meaning', meaning);
+        localStorage.setItem('ad', additionalinfo);
       })
       .catch(error => {
         console.log(error); // Debugging line
@@ -654,7 +658,7 @@ body{
     /* left: 350px; */
     /* top: 100px; */
     /* padding-bottom: 5px; */
-    padding-left: 50px;
+    padding-left: 20px;
     padding-right: 50px;
     /* height: 200%; */
     margin-bottom: 50px;
@@ -674,7 +678,7 @@ body{
   transition: all 0.25s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
-  width: 120px;
+  width: 80px;
     /* z-index: 1000; */
     font: 16px Arial;
     /* margin: 2px 0 0; */
