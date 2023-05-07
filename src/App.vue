@@ -418,7 +418,7 @@ fetchData: function() {
       console.log(response.data)
       vm.dboverlay = true;
       vm.nodata = false; // Use the reference to 'this' inside the axios callback function to set the nodata property value
-      console.log("omo");
+      console.log(vm.query);
 
       // Navigate to search results page with the search query as a parameter
       vm.$router.push({ path: '/search-results', query: { q: vm.query } })
@@ -429,7 +429,6 @@ fetchData: function() {
     }
   });
 },
-
 
 rs(){
   this.dboverlay = false;
