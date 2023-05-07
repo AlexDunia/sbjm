@@ -118,7 +118,7 @@
    <!-- <p className="pprice" @click="changePrice(product)"> {{product.price}}  </p> -->
    <!-- <p className="pprice" id="cat"> {{product.category}}  </p> -->
 
-   <p className="pprice" id="cat"> Category  </p>
+   <p className="pprice" id="cat"> {{product.categories}} </p>
 
   </div>
   </div>
@@ -143,9 +143,8 @@
   <br/>
   <br/>
 
-  <div class="cil">
+  <div class="cil" id="categorieshead">
     <h1> TOP CATEGORIES </h1>
-  </div>
 
   <div class="tcdiv">
 
@@ -168,10 +167,25 @@
 </div>
 
 </div>
+</div>
 
 
 
-<br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
+  <div class="video-background">
+    <video autoplay loop muted>
+      <source src="../assets/images/sbjmvideo.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <br/>
   <br/>
   <br/>
   <br/>
@@ -483,6 +497,22 @@ export default {
 </script>
 <style>
 
+.video-background {
+    /* position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0; */
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  video {
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+  }
+
 .dcbg{
   /* background-image: url('path/to/image.jpg'); */
   background-image: url('../assets/images/dcbg.jpg');
@@ -530,11 +560,12 @@ export default {
   color:rgb(87, 86, 86);
   /* padding:10px; */
   align-items:center;
-text-align:center;
-  padding:0 10px 0 10px;
+  text-align:center;
+  padding:4px 10px 0 10px;
   font-size:10px;
   font-weight:500;
 }
+
 
 .hflex{
   display:flex;
@@ -553,6 +584,19 @@ text-align:center;
     color:rgb(97, 96, 96);
     line-height:2.7rem;
     /* padding-bottom:20px; */
+}
+
+#categorieshead{
+  width:95%;
+  margin:auto;
+}
+
+#categorieshead h1{
+ margin-left:50px;
+}
+
+#categorieshead h1{
+ margin-bottom:40px;
 }
 
 .hbg{

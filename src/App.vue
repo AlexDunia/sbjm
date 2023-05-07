@@ -43,14 +43,15 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
       <br/>
       <br/>
 
-    <a> <router-link to="/"> Tops </router-link> </a>
-    <a> <router-link to="/"> Pants </router-link> </a>
-    <a> <router-link to="/"> Skirt </router-link> </a>
-    <a> <router-link to="/"> Gown </router-link> </a>
-    <a> <router-link to="/"> Bubu </router-link> </a>
-    <a> <router-link to="/"> Jumpsuit </router-link> </a>
+    <a class="nl"> <router-link to="/"> Home </router-link> </a>
+    <a class="nl"> <router-link to="/tops"> Tops </router-link> </a>
+    <a class="nl"> <router-link to="/pants"> Pants </router-link> </a>
+    <a class="nl"> <router-link to="/skirt"> Skirt </router-link> </a>
+    <a class="nl"> <router-link to="/gown"> Gown </router-link> </a>
+    <a class="nl"> <router-link to="/bubu"> Bubu </router-link> </a>
+    <!-- <a> <router-link to="/"> Jumpsuit </router-link> </a>
     <a> <router-link to="/"> Swim Wear </router-link> </a>
-    <a> <router-link to="/"> Swim Cover </router-link> </a>
+    <a> <router-link to="/"> Swim Cover </router-link> </a> -->
     <a> <router-link to="/contact"> Contact </router-link> </a>
     </div>
 
@@ -74,9 +75,9 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
     <a class="nl"> <router-link to="/skirt"> Skirt </router-link> </a>
     <a class="nl"> <router-link to="/gown"> Gown </router-link> </a>
     <a class="nl"> <router-link to="/bubu"> Bubu </router-link> </a>
-    <a class="nl"> <router-link to="/jumpsuit"> Jumpsuit </router-link> </a>
+    <!-- <a class="nl"> <router-link to="/jumpsuit"> Jumpsuit </router-link> </a>
     <a class="nl"> <router-link to="/swimwear"> Swim Wear </router-link> </a>
-    <a class="nl"> <router-link to="/swimcover"> Swim Cover </router-link> </a>
+    <a class="nl"> <router-link to="/swimcover"> Swim Cover </router-link> </a> -->
     <a class="nl"> <router-link to="/contact"> Contact </router-link> </a>
     </div>
 
@@ -188,11 +189,13 @@ RewriteRule ^(.*)$ https://bbtfoods.com.ng/$1 [R,L] -->
 </div>
 
   <router-view :addtocart="addtocart" :ck="checkout" :buttons="buttons" :increasev="increasevalue" :decreasev="decreasevalue" :hdc="handleClick" :productlist="products" :selected="selectedProducts" :viewProduct="(id) => getP(id)"/>
+<Footer/>
 </template>
 
 <script>
 import axios from 'axios'
 import router from './router'
+import Footer from '././components/Footer.vue'
 
 export default{
 
@@ -612,6 +615,10 @@ getP(productId) {
 }
 
     },
+
+    components: {
+    Footer
+  },
 
   //   watch: {
   //   cart: {
@@ -1106,6 +1113,7 @@ input:focus {
 } */
 
 @media (max-width: 1000px){
+
   #iconcolortwo {
     /* color: rgba(95, 94, 94, 0.6); */
     color:black;

@@ -65,11 +65,4 @@
 
   <style>
 
-  .filterhead h1{
-    font-size: 40px;
-      font-weight: 300;
-      color: rgb(97, 96, 96);
-      line-height: 2.7rem;
-  }
-
   </style>

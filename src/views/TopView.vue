@@ -4,9 +4,11 @@
   <br/>
   <br/>
 
+<div class="catdiv">
 <div className="pw">
   <div class="filterhead">
-    <h1> Category: Tops </h1>
+    <p> Showing results for: </p>
+    <h1> Category - Tops </h1>
   </div>
 <div className="pgridc">
   <div v-for="(product, i) in  items" :key="i">
@@ -33,11 +35,13 @@
 
   </div>
 </div>
+</div>
 
 
 </template>
 
 <script>
+
 export default {
   props: ['viewProduct'],
   data() {
@@ -46,7 +50,7 @@ export default {
     };
   },
   mounted() {
-    fetch('http://localhost/tops.php')
+    fetch('http://localhost/tops.php?categories=Top')
       .then((response) => response.json())
       .then((data) => {
         this.items = data;
@@ -72,80 +76,39 @@ export default {
     line-height: 2.7rem;
 }
 
-.cflex{
-    display:flex;
-    justify-content: space-between;
-    width:75%;
+.filterhead p{
+  /* font-size: 10px; */
+  margin-bottom:-22px;
+  margin-left:5px;
+  color:#81A695;
+  /* color: rgb(97, 96, 96); */
+}
+
+@media (max-width: 700px){
+
+  .catdiv{
+    margin-top:70px;
+  }
+
+  .filterhead{
+    width:60%;
     margin:auto;
-    padding-top:200px;
-}
+  }
 
-.ci{
-    flex-basis:40%;
-    margin-top:100px;
-    color: #727171;
-}
-
-.ci h1{
-    font-size:30px;
-    font-weight:600;
-    line-height:2.7rem;
-}
-
-.ci p{
-    font-size:14px;
-    margin-top:25px;
-}
-
-.mycoformm{
-    flex-basis:50%;
-}
-
-.mycoformm{
-    /* flex-basis: 30%; */
-    color: #727171;
-}
-
-.mycoformm h3{
-    font-size:30px;
-    font-weight:300;
-    line-height:2.7rem;
-    color: #727171;
-    padding-bottom:15px;
-}
-
-.mycoformm form label {
-    font-size: 14px;
+  .filterhead h1{
+    font-size: 30px;
     font-weight: 300;
-    line-height: 1rem;
-}
-
-.mycoformm form input{
-    /* border: 0.8px solid #504d4d; */
-    border-bottom: 0.8px solid #504d4d;
-    opacity: .5;
-}
-
-.formname{
-    padding: 15px;
-    /* width: 100%; */
-    margin-bottom: 20px;
-}
-
-@media (max-width: 1000px){
-
-.cflex {
-    display: block;
-    padding-top:140px;
-}
-
-.mycoformm h3 {
-    font-size: 20px;
-    font-weight: 300;
+    color:red;
+    color: rgb(97, 96, 96);
     line-height: 2.7rem;
-    color: #727171;
-    margin-top:60px;
-    padding-bottom: 15px;
+}
+
+.filterhead p{
+  /* font-size: 10px; */
+  margin-bottom:-18px;
+  margin-left:5px;
+  color:#81A695;
+  /* color: rgb(134, 134, 134); */
 }
 
 }
